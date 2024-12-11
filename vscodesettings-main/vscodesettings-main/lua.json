@@ -1,0 +1,122 @@
+{
+  "esx-export": {
+    "prefix": ["esx"],
+    "body": ["ESX = exports['es_extended']:getSharedObject()"],
+    "description": "do the esx export, (1.9)"
+  },
+  "NativeUI: base": {
+    "prefix": ["menupool"],
+    "body": ["_menuPool = NativeUI.CreatePool()", "",
+     " Citizen.CreateThread(function()", 
+    "\t while true do",
+        "\t \t Citizen.Wait(1)",
+        "\t \tif _menuPool:IsAnyMenuOpen() then",
+            "\t \t _menuPool:ProcessMenus()",
+        "\t \telse",
+            "\t \t Citizen.Wait(150) -- this small line",
+        "\t \tend",
+    "\t end",
+"end)",],
+    "description": "write the nativeui menupool and add the thread to load the menu"
+  },
+  "thread": {
+    "prefix": ["thread"],
+    "body": ["Citizen.CreateThread(function()",
+  "\twhile true do",
+  "-- your code",
+"\tend",
+"end)"],
+    "description": "do a citizen.createthread"
+  },
+  "NativeUI: create main menu": {
+    "prefix": ["mainmenu"],
+    "body": [" mainmenu = NativeUI.CreateMenu('Menu-Name', 'Menu-Description')",
+  "",
+"_menuPool:Add(mainmenu)",
+"_menuPool:RefreshIndex()",
+"_menuPool:MouseControlsEnabled(false)",
+"_menuPool:MouseEdgeEnabled(false)",
+"_menuPool:ControlDisablingEnabled(false)"],
+    "description": "create a nativeui mainmenu"
+  },
+  "NativeUI: Create Item": {
+    "prefix": ["nitem"],
+    "body": [" local item = NativeUI.CreateItem('Item-Name', 'Item-Description')"],
+    "description": "create a nativeui item"
+  },
+  "NativeUI Enabled(false)": {
+    "prefix": [":Enabled(false)"],
+    "body": [":Enabled(false)"],
+    "description": "Disable an item"
+  },
+  "NativeUI Enabled(true)": {
+    "prefix": [":Enabled(true)"],
+    "body": [":Enabled(true)"],
+    "description": "Enable an item"
+  },
+  "NativeUI SetRightLabel": {
+    "prefix": [":SetRightLabel('')"],
+    "body": [":SetRightLabel('')"],
+    "description": "Set Right label of an item"
+  },
+  "NativeUI Visible(true)": {
+    "prefix": [":Visible(true)"],
+    "body": [":Visible(true)"],
+    "description": "make a menu visible"
+  },
+  "NativeUI Visible(false)": {
+    "prefix": [":Visible(false)"],
+    "body": [":Visible(false)"],
+    "description": "make a menu dissapear"
+  },
+  "NativeUI AddItem": {
+    "prefix": [":AddItem()"],
+    "body": [":AddItem()"],
+    "description": "Add an Item to a menu"
+  },
+  "NativeUI.Activated": {
+    "prefix": [".Activated"],
+    "body": [".Activated = function(sender, index)", "", "end"],
+    "description": "Activate an Item!"
+  },
+  "xPlayer": {
+    "prefix": ["xPlayer"],
+    "body": ["local xPlayer = ESX.GetPlayerFromId(source)"],
+    "description": "Creates xPlayer"
+  },
+   "CreateDialog": {
+    "prefix": ["CreateDialog"],
+    "body": ["function CreateDialog(OnScreenDisplayTitle_shopmenu) --general OnScreenDisplay for KeyboardInput",
+    "\tAddTextEntry(OnScreenDisplayTitle_shopmenu, OnScreenDisplayTitle_shopmenu)",
+    "\tDisplayOnscreenKeyboard(1, OnScreenDisplayTitle_shopmenu, '', '', '', '', '', 32)",
+    "\twhile (UpdateOnscreenKebord() == 0) do",
+    "\t\tDisableAllControlActions(0);",
+    "\t\tWait(0);",
+    "\tend",
+    "\tif (GetOnscreenKeyboardResult()) then",
+    "\t\tlocal displayResult = GetOnscreenKeyboardResult()",
+    "\t\treturn displayResult",
+    "\tend",
+  "end"],
+    "description": "Creates Dialog"
+  },
+  "Input": {
+    "prefix": ["Input"],
+    "body": ["local input = CreateDialog('${1}')"],
+    "description": "Creates CreateDialog"
+  },
+  "distance": {
+    "prefix": ["dis"],
+    "body": ["local PlayerPed = PlayerPedId()",
+   "local PlayerCoords = GetEntityCoords(PlayerPed)",
+   "local distance = #(vector3(${1}, ${2}, ${3})-PlayerCoords)"],
+    "description": "Creates dis between player and coords"
+  },
+  "RegisterCommand": {
+    "prefix": ["RegisterCommand"],
+    "body": ["RegisterCommand('test', function(source, args, rawCommand)",
+    "end)"],
+    "description": "Creates a command"
+  },
+}
+
