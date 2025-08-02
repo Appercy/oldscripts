@@ -1,0 +1,37 @@
+---
+title: Instalacja
+sidebar: {
+    order: 2
+}
+---
+## Jak prawidłowo zainstalować zasób UI
+Aby upewnić się, że zasób jest poprawnie zainstalowany i działa, wykonaj poniższe kroki:
+
+import { Code, Steps, Tabs, TabItem} from '@astrojs/starlight/components'
+
+<Steps>
+
+1. **Pobierz zasób**  
+   Pobierz zasób UI ze strony [Keymaster](https://keymaster.fivem.net/).
+
+2. **Dodaj zasób do swojego serwera**  
+   Przeciągnij pobrany zasób do głównego katalogu `/resources`.
+
+3. **Zaktualizuj plik konfiguracyjny**  
+   Otwórz `server.cfg` (lub użyj txAdmin > CFG Editor) i wykonaj następujące kroki:  
+  
+   Dodaj poniższą linię, aby upewnić się, że nowy zasób UI zostanie uruchomiony:  
+   ```plaintext
+   ensure ZSX_UI
+   ```
+   Linia ta powinna być umieszczona gdzieś za linią `ensure` Twojego frameworka, najlepiej na końcu pliku.
+
+4. **Skonfiguruj zasób**  
+   Otwórz pliki konfiguracyjne i dostosuj UI do swoich potrzeb.
+
+5. **Uruchom serwer**  
+   Uruchom serwer i ciesz się nowym zasobem!
+
+</Steps>
+
+

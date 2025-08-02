@@ -1,0 +1,19 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/SocialIcons.astro';
+
+const { links } = Astro.props;
+---
+
+<Default {...Astro.props}>
+  <slot />
+  {links?.tebex && (
+    <a href={links.tebex} target="_blank" rel="noopener noreferrer">
+      <span class="sr-only">Tebex</span>
+      <svg xmlns="<http://www.w3.org/2000/svg"> width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Replace this with the actual Tebex icon SVG path -->
+        <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 18.5l-8-4V8.5l8 4v8zm0-10l-8-4L12 2.5l8 4-8 4zm8 6l-8 4v-8l8-4v8z"/>
+      </svg>
+    </a>
+  )}
+</Default>

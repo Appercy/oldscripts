@@ -1,0 +1,109 @@
+---
+sidebar_position: 1
+title: MyCharCreator eigene Dimensionen hinzufügen
+sidebar_label: MyCharCreator eigene Dimensionen hinzufügen
+---
+
+# 1. Stellen Sie sicher, dass Sie alles haben
+
+Wenn Sie MyMulticharV3 installiert haben, müssen Sie Schritt 2 nicht durchführen und können direkt zu Schritt 3 übergehen.
+
+Wenn Sie MyMulticharV3 nicht installiert haben, müssen Sie das tun, was in Schritt 2 gesagt wird.
+
+# 2. Ein Bucket-System zu MyCharCreator hinzufügen
+
+### 1. BUCKETS.lua herunterladen
+
+[Hier herunterladen](https://drive.google.com/file/d/1GDWGnFXEDRkA6j55jMJVxzwBT7hO3Y9F/view?usp=drive_link) (kann zusätzliche Genehmigung von mir erfordern)
+
+### 2. Installieren Sie Buckets.lua in MyCharCreator
+
+Legen Sie die buckets.lua In Ihren Skriptordner (myCharCreator) und dann...
+
+In Ihrer fxmanifest.lua finden Sie Code, der so aussieht:
+
+```lua
+server_scripts {
+    '@mysql-async/lib/MySQL.lua',
+    'server.lua',
+}
+```
+
+Ersetzen Sie ihn mit diesem:
+
+```lua
+server_scripts {
+    '@mysql-async/lib/MySQL.lua',
+    'server.lua',
+    'BUCKETS.lua',
+}
+```
+
+Jetzt haben Sie die Bucket-Funktionalität zu Ihrem MyCharCreator hinzugefügt (buckets = dimensions), jetzt müssen wir sie im Skript selbst implementieren!
+
+# 3. Implementierung in MyCharCreator
+
+Suchen Sie in Ihrer client.lua von MyCharCreator nach diesem Code:
+
+und fügen Sie den rot umkreisten Code hinzu!
+
+<figure style={{textAlign: 'center'}}>
+  <img src={require('/img/mycharcreatorcode.png').default} />
+</figure>
+
+```lua showLineNumbers
+ TriggerServerEvent("einreise:setroutingbucket")
+```
+
+(hier noch einmal zum Kopieren)
+
+```lua showLineNumbers
+ creatorMenu.OnMenuClosed = function(sender, item, index)
+    DeleteSkinCam()
+    TriggerServerEvent("einreise:resetroutingbucket")
+end
+```
+
+(hier auch)
+
+und jetzt suchen Sie nach...
+
+```lua showLineNumbers
+    saveItem.Activated = function(sender, item, index)
+
+            FreezeEntityPosition(PlayerPedId(), false)
+
+            mainMenu:Visible(false)
+
+            TriggerEvent('skinchanger:getSkin', function(finalSkin)
+
+                TriggerServerEvent('register:saveSkin', finalSkin)
+
+                -- TriggerEvent('mySpawnSelector:open')
+
+                --generateClothesMenu()
+
+            end)
+```
+
+und ersetzen es mit...
+
+```lua showLineNumbers
+    saveItem.Activated = function(sender, item, index)
+
+            FreezeEntityPosition(PlayerPedId(), false)
+
+            mainMenu:Visible(false)
+            TriggerServerEvent("einreise:resetroutingbucket")
+            TriggerEvent('skinchanger:getSkin', function(finalSkin)
+
+                TriggerServerEvent('register:saveSkin', finalSkin)
+
+                -- TriggerEvent('mySpawnSelector:open')
+
+                --generateClothesMenu()
+
+            end)
+```
+
+und voilà! :)

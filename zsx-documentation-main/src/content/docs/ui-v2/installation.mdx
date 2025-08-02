@@ -1,0 +1,189 @@
+---
+title: Installation
+sidebar: {
+    order: 2
+}
+---
+## How to Properly Install the UI Resource
+To ensure the resource is correctly installed and functioning, follow these steps:
+
+import { Aside, Code, Steps, Tabs, TabItem, FileTree} from '@astrojs/starlight/components'
+
+<Steps>
+  <ol>
+    <li>
+      **Download the Resource**  
+      Download the UI resource from the [Keymaster site](https://keymaster.fivem.net/).
+    </li>
+    <li>
+      **Add the Resource to Your Server**  
+      Drag the downloaded resource into your main `/resources` directory.
+    </li>
+    <li>
+      **Update Your Configuration File**  
+      Open your `server.cfg` (or use txAdmin > CFG Editor) and do the following:  
+      Add the following line to ensure the new UI resource starts:  
+      <pre><code>ensure ZSX_UIV2</code></pre>
+      This should be placed somewhere after your framework's `ensure` line, preferably at the bottom of the file.
+    </li>
+    <li>
+      **Configure**  
+      Open the `config` files and configure the UI to your liking.
+    </li>
+    <li>
+      **Start Your Server**  
+      Launch your server and enjoy the resource!
+    </li>
+  </ol>
+</Steps>
+
+
+## Important Notes for Installation
+
+### Welcome Screen
+
+If you're using a loading screen with manual shutdown and want to manually close it, follow these steps:
+
+Open this file
+
+<FileTree>
+- ZSX_UIV2
+  - shared
+    - config_loadingscreen.lua
+</FileTree>
+
+and change the following line:
+
+```lua
+Config.AwaitShutdownLoadingScreen = true
+```
+This will allow you to manually close the loading screen.
+
+### Chat
+
+To use our chat system, you need to start ZSX_UIV2 before your framework to ensure proper functionality.
+
+You can start the ZSX_UIV2 resource right before your framework. By default, for QBCore, follow these steps:
+<Tabs> 
+<TabItem label ="QB-Core/Qbox"> 
+
+<Steps>
+  <ol>
+    <li>
+      Open your <code>server.cfg</code> file.
+    </li>
+    <li>
+      Add the following line <strong>before</strong> the <code>ensure qb-core</code> or <code>ensure [qb]</code> line:
+      <pre><code>ensure ZSX_UIV2</code></pre>
+    </li>
+  </ol>
+</Steps>
+
+
+This ensures that ZSX_UIV2 loads first.
+
+<Aside type="caution"> 
+If you have set the ZSX_UIV2 directory to be inside /resources/[qb] , it will not work! Make sure ZSX_UIV2 is placed outside of that directory for proper functionality.
+</Aside>
+
+</TabItem>
+
+<TabItem label ="ESX"> 
+
+<Steps>
+  <ol>
+    <li>
+      Open your <code>server.cfg</code> file.
+    </li>
+    <li>
+      Add the following line <strong>before</strong> the <code>ensure es_extended</code> or <code>ensure [core]</code> line:
+      <pre><code>ensure ZSX_UIV2</code></pre>
+    </li>
+  </ol>
+</Steps>
+
+
+This ensures that ZSX_UIV2 loads first.
+
+<Aside type="caution">
+If you have set the ZSX_UIV2 directory to be inside /resources/[core], it will not work! Make sure ZSX_UIV2 is placed outside of that directory for proper functionality.
+</Aside>
+
+</TabItem>
+</Tabs>
+
+### How to Remove Displayers (Money HUD, Citizen ID, Job)
+
+Displayers are the small sections typically located at the top right of the UI by default (including Money HUD, Citizen ID, and Job).
+
+To remove them, simply disable them in the configuration file:
+<FileTree>
+- ZSX_UIV2
+  - shared
+    - ui_cfg
+      - config_displayer.lua
+</FileTree>
+
+<Code code="Config.Displayer.Use = false" lang="lua" ins="false">
+
+</Code>
+
+
+
+### ZSX_Multicharacter
+
+If you're using the ZSX_Multicharacter resource, you need to change the following line in the
+
+<FileTree>
+- ZSX_UIV2
+  - shared
+    - config.lua
+</FileTree>
+
+file:
+
+<Code code="ZSX_Multicharacter = 'MY_CHANGED_MULTICHARACTER'" lang="lua" ins="MY_CHANGED_MULTICHARACTER">
+
+</Code>
+
+Replace `MY_CHANGED_MULTICHARACTER` with the name of your resource. and then after that you need to change the following line aswell
+
+
+
+<Code code="Config.CustomInitialization = true" lang="lua" ins="true">
+
+</Code>
+
+This will ensure that the ZSX_Multicharacter resource is loaded correctly. After that just restart the server and you should be good to go.
+
+
+if you use any other multicharacter resource, you need to change the following line in the 
+<FileTree>
+- ZSX_UIV2
+  - shared
+    - config.lua
+</FileTree>
+
+<Code code="Config.CustomInitialization = true" lang="lua" ins="true">
+</Code>
+
+This will disable the Auto Initialization (Welcome Screen) and you need to manually initialize the UI with the following Event
+
+
+# Auto Installer
+
+
+The UI resource features an auto-installer that integrates the UI into both ox_lib and Frameworks. This feature is currently under development. To use it, simply run the following commands:
+
+    /install_ox_lib_compatibility
+    /install_qb_core_compatibility
+
+These commands will install the UI into the respective scripts, ensuring compatibility with their functions.
+
+<Aside type="caution">
+The auto-installer is still in development and may not work as expected.
+</Aside>
+
+
+
+

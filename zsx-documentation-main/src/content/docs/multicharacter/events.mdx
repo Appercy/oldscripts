@@ -1,0 +1,63 @@
+---
+title: Events
+sidebar: {
+    order: 5
+}
+---
+
+import { Code, Steps, Tabs, TabItem} from '@astrojs/starlight/components'
+
+<Code wrap code="-- state @boolean
+RegisterNetEvent('ZSX_Multicharacter:Listener:WelcomeScreenStateChanged')
+AddEventHandler('ZSX_Multicharacter:Listener:WelcomeScreenStateChanged', function(state)
+end)
+-- none
+RegisterNetEvent('ZSX_Multicharacter:Listener:MainInitialized')
+AddEventHandler('ZSX_Multicharacter:Listener:MainInitialized', function()
+end)
+
+-- none
+RegisterNetEvent('ZSX_Multicharacter:Listener:MainFinishedWork')
+AddEventHandler('ZSX_Multicharacter:Listener:MainFinishedWork', function()
+end)
+
+-- none
+RegisterNetEvent('ZSX_Multicharacter:Listener:WelcomeScreenStateChanged')
+AddEventHandler('ZSX_Multicharacter:Listener:WelcomeScreenStateChanged', function()
+end)
+
+-- none
+RegisterNetEvent('ZSX_Multicharacter:Listener:MulticharacterInitialized')
+AddEventHandler('ZSX_Multicharacter:Listener:MulticharacterInitialized', function()
+end)
+
+-- none
+RegisterNetEvent('ZSX_Multicharacter:Listener:MainFinishedWork')
+AddEventHandler('ZSX_Multicharacter:Listener:MainFinishedWork', function()
+end)
+-- characterdata @table
+-- character_id @number
+RegisterNetEvent('ZSX_Multicharacter:Listener:SwappedCharacter')
+AddEventHandler('ZSX_Multicharacter:Listener:SwappedCharacter', function(characterdata, character_id)
+end)
+-- character_id @number
+RegisterNetEvent('ZSX_Multicharacter:Listener:SelectedCharacter')
+AddEventHandler('ZSX_Multicharacter:Listener:SelectedCharacter', function(characterid)
+end)
+-- characterdata @table
+RegisterNetEvent('ZSX_Multicharacter:Listener:CharacterCreated')
+AddEventHandler('ZSX_Multicharacter:Listener:CharacterCreated', function(characterdata)
+end)
+-- none
+RegisterNetEvent('ZSX_Multicharacter:Listener:LocationsDisabled')
+AddEventHandler('ZSX_Multicharacter:Listener:LocationsDisabled', function()
+end)
+-- coords @vector3
+RegisterNetEvent('Multicharacter:Listener:ChangedLocation')
+AddEventHandler('Multicharacter:Listener:ChangedLocation', function()
+end)
+"title="Events" lang="lua">
+
+</Code>
+
+There are also specialized functions within the resource called "workers." they dont work externally Workers are event-driven functionalities designed to enhance the developer experience when working with our Multicharacter system. These provide additional capabilities for extending and customizing the resource. you can read about them in the files section under client/cl_worker.lua

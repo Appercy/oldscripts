@@ -1,0 +1,76 @@
+---
+title: Mitwirken an der Ludaro.de Wiki  
+description: Erfahre, wie du zur Ludaro.de Wiki beitragen kannst
+---
+
+Egal, ob du Entwickler, Designer oder Content Creator bist – es gibt viele Möglichkeiten, wie du uns helfen kannst, unsere Ressourcen zu verbessern und das Erlebnis für alle zu optimieren.
+
+Auf jeder Seite der Ludaro.de Wiki findest du einen Link, um den Quellcode auf GitHub zu bearbeiten. So kannst du direkt Änderungen an der Dokumentation vornehmen und nach Abschluss eine Pull-Request einreichen, damit wir deine Änderungen überprüfen und in das Hauptrepository integrieren können.
+
+In dieser Anleitung erfährst du, wie du zur Ludaro.de Wiki beitragen kannst, und erhältst einige nützliche Tipps, wie du einen positiven Einfluss auf unsere Dokumentation nehmen kannst.
+
+Du wirst `.md`- oder `.mdx`-Dateien im `src/docs`-Ordner bearbeiten, die verschiedene Abschnitte der Wiki repräsentieren.
+
+Um mitzumachen, benötigst du ein GitHub-Konto sowie grundlegende Kenntnisse in Markdown oder MDX.
+
+Wir nutzen [Starlight](https://starlight.astro.build/) für diese Wiki und [Astro](https://astro.build/) als unseren Static Site Generator. Du bist herzlich eingeladen, die Funktionen dieser Tools zu nutzen.
+
+## Wie man mitarbeitet
+
+### 1. Repository forken
+
+Der erste Schritt, um zur Ludaro.de Wiki beizutragen, ist, das Repository auf GitHub zu forken. Dadurch wird eine Kopie des Repositories in deinem GitHub-Account erstellt, sodass du Änderungen vornehmen kannst, ohne das Original-Repository zu beeinflussen.
+
+### 2. Verstehen der Ordnerstruktur
+
+Die Dokumentation ist in verschiedene Abschnitte unterteilt, die jeweils einen anderen Aspekt von Ludaro.de abdecken. Hier ist eine kurze Übersicht über die Ordnerstruktur:
+
+import { FileTree } from '@astrojs/starlight/components';
+
+<FileTree>
+
+- astro.config.mjs
+- package.json
+- src
+  - **docs** hier sind alle Dokumentationsdateien gespeichert
+    - contributing.mdx diese Datei!
+    - home.mdx Die Hauptseite der Wiki!
+    - Index.mdx Die Startseite der Wiki!
+    - en (Englisch)
+        - ...
+    - lua (Lua Basics)
+        - ...
+    - fvm (FiveM Server Setup)
+        - ...
+    - issues (Common Issues)
+        - ...
+</FileTree>
+
+### 3. Repository klonen
+
+Nachdem du das Repository geforkt hast, kannst du es entweder auf deinem Rechner oder direkt auf GitHub bearbeiten.
+
+### 4. Pull-Request erstellen
+
+Nachdem du deine Änderungen vorgenommen hast, erstelle einen Pull-Request, um deine Änderungen wieder in das Haupt-Repository zu integrieren. Achte darauf, eine detaillierte Beschreibung der vorgenommenen Änderungen und deren Notwendigkeit hinzuzufügen.
+
+### 5. Review und Merge
+
+Sobald du deinen Pull-Request eingereicht hast, wird unser Team deine Änderungen überprüfen und gegebenenfalls Feedback geben. Wenn alles passt, werden wir deine Änderungen in das Haupt-Repository übernehmen.
+
+## Was du beitragen kannst
+
+Es gibt viele Möglichkeiten, wie du zur Ludaro.de Wiki beitragen kannst, darunter:
+
+- Korrigieren von Rechtschreibfehlern und grammatikalischen Fehlern
+- Hinzufügen neuer Inhalte oder Aktualisieren bestehender Inhalte
+- Verbesserung des Designs und Layouts der Wiki
+- Übersetzung der Wiki in andere Sprachen
+
+## Regeln
+
+Um eine positive und produktive Beitragserfahrung zu gewährleisten, bitten wir dich, folgende Regeln zu beachten:
+
+- Sei respektvoll und rücksichtsvoll gegenüber anderen
+- Gib konstruktives Feedback und Vorschläge
+- Verwende klare und präzise Sprache

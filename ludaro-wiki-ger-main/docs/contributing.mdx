@@ -1,0 +1,144 @@
+---
+sidebar_position: 1
+title: Zur Wiki beitragen ✍️
+sidebar_label: Zur Wiki beitragen ✍️
+---
+
+# Wie füge ich etwas zur Wiki hinzu?
+
+Die gesamte Wiki ist auf GitHub verfügbar und wird über GitHub Pages bereitgestellt (mit einem Cloudflare-DNS). Du kannst einfach auf "Bearbeiten" unten auf der Seite klicken, die dich interessiert, oder neue Dateien und Ideen einbringen! Alles ist erlaubt, solange es die Qualität der Wiki nicht beeinträchtigt und angemessen ist.
+
+Um Änderungen vorzunehmen, brauchst du einen GitHub-Account. Zuerst musst du meine Wiki auf dein GitHub "forken" (auf deinen Account kopieren) und dann bearbeiten. Anschließend erstellst du einen "Pull-Request", wodurch du mir vorschlägst, deine Änderungen in die Wiki aufzunehmen.
+
+Das ist alles!
+
+# Wie schreibe ich dort etwas?
+
+Auf GitHub kannst du alle Dateien (auch diese) sehen und bearbeiten. Diese sind im .mdx-Format gespeichert (mdx = Markdown Extreme).
+
+Im Markdown gibt es keine strikten Regeln, aber du kannst damit ansprechende Inhalte erstellen, wie zum Beispiel:
+
+### Überschriften
+
+Diese erstellst du, indem du ein #(Hashtag) (mit Leerzeichen danach) vor den Text setzt. Je mehr Hashtags du verwendest, desto kleiner wird die Überschrift.
+
+### Textformatierung
+
+Markdown ermöglicht auch die Formatierung von Texten. Du kannst zum Beispiel Text **fett** oder *kursiv* darstellen.
+
+### Listen
+
+Ungeordnete Listen werden mit Bindestrichen erstellt:
+
+- Punkt 1
+- Punkt 2
+
+Geordnete Listen werden mit Zahlen erstellt:
+
+1. Erster Punkt
+2. Zweiter Punkt
+
+### Links
+
+Links können einfach durch Angabe der URL oder mit einem sprechenden Text erstellt werden:
+
+[Linktext](https://www.example.com)
+
+### Bilder
+
+Bilder können ebenfalls eingefügt werden:
+
+![Alternativer Text](https://www.example.com/bild.jpg)
+
+### Code
+
+Codeblöcke können durch Einrückungen oder durch Backticks definiert werden:
+
+Einzeiliger Code: `code`
+
+Mehrzeiligier Code:
+`
+code
+Code
+code
+`
+
+### Head Metadata
+
+jede einzelne datei hat einen namen, **dieser name darf keine leerzeichen enthalten** (ordner auch nicht) daher bitte keine leerzeichen hinzufügen!
+
+um Ordner und Dateien richtig mit Leerzeichen zu bennenen benutzt man **Head Metadata**
+
+das ganze sieht dann im code so aus:
+
+`
+---
+sidebar_position: 1
+title: Zur Wiki beitragen ✍️
+sidebar_label: Zur Wiki beitragen ✍️
+---
+
+`
+
+dort gibst du den titel, namen und die sidebar position an!
+
+### Docusaurus Spezifisch
+Das ist alles bisjetzt nur auf Markdown bezogen, 
+
+docuausurus hat aber noch ein paar coole Features welche [hier](https://docusaurus.io/docs/markdown-features) aufgelistet sind, ich demonstriere ein paar hier,
+
+:::danger
+
+Achtung, da kommst du der Coole!.
+
+:::
+
+<Tabs groupId="operating-systems">
+  <TabItem value="win" label="Windows">Windows in windows.</TabItem>
+  <TabItem value="mac" label="macOS">macOS is macOS.</TabItem>
+</Tabs>
+
+
+Let $f\colon[a,b]\to\R$ be Riemann integrable. Let $F\colon[a,b]\to\R$ be
+$F(x)=\int_{a}^{x} f(t)\,dt$. Then $F$ is continuous, and at all $x$ such that
+$f$ is continuous at $x$, $F$ is differentiable at $x$ with $F'(x)=f(x)$.
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
+
+
+# Übersetzungen
+
+Um eine Datei ins Englische zu übersetzen oder sogar neue Übersetzungen hinzuzufügen, musst du verstehen, dass jede Datei sozusagen "kopiert" wird.
+
+Unter dem Ordner "docs" befindet sich die deutsche Version der Wiki (das Default). Unter `i18n/en` ist die englische Version. Falls eine Datei nicht im Englischen existiert, wird sie auf Deutsch angezeigt.
+
+# Pfade in der Wiki:
+
+### docs
+
+Hier befindet sich die Dokumentation und die Datei, die du gerade liest!
+
+### i18n
+
+Für Übersetzungen der Pfade.
+
+### src
+
+Der Pfad für alle Einstellungen von Docusaurus und für die Homepage.
+
+### static
+
+Hier sind Dinge wie Bilder gespeichert.
+
+
+
+### Zusammenfassung
+
+Durch diese Schritte kannst du aktiv zur Verbesserung der Wiki beitragen und anderen helfen, FiveM zu einem besseren Ort zu machen. Jede einzelne Seite, die du hinzufügst oder verbessert, trägt dazu bei, die Community zu stärken und Wissen zu teilen. Danke für deine Unterstützung! 🌟
+

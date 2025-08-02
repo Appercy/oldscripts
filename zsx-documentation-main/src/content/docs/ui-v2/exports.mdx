@@ -1,0 +1,592 @@
+---
+title: Exports
+sidebar: {
+    order: 3
+}
+---
+import { Aside, Tabs, TabItem, LinkCard, CardGrid, Code } from '@astrojs/starlight/components'; 
+
+<Tabs>
+<TabItem label = "Features">
+## Features
+<Tabs>
+<TabItem label = "Notifiy">
+
+### Notification
+
+Notifications are displayed in the top-right corner of the screen. They are designed to provide information about various events, such as player interactions, job updates, and more.
+
+#### Adding a Notification
+
+To add a notification, use the following function:
+
+<Code lang="lua" code={`local serial = exports['ZSX_UIV2']:Notification(header, text, icon, duration)`}>
+</Code>
+
+<Aside>
+This export returns a serial, which can be useful if you need to remove it later.
+</Aside>
+
+#### Arguments
+
+| Argument        | Type     | Description                                      | Optional |
+|-----------------|----------|--------------------------------------------------|----------|
+| `header`        | `string` | Header of the notification.                      | ✅ Yes    |
+| `text`          | `string` | Text of the notification.                        | ❌ No    |
+| `icon`          | `string` | Icon of the notification.                        | ✅ Yes    |
+| `duration`      | `number` | Duration of the notification in milliseconds.    | ✅ Yes    |
+
+#### Removing a Notification
+
+To remove a notification before its duration ends, use the serial returned when the notification was created. This serial uniquely identifies the notification, allowing you to remove it as needed.
+
+<Code code="exports['ZSX_UIV2']:Notification_Remove(serial)" lang="lua" mark="serial" />
+
+</TabItem>
+
+<TabItem label="Def. Notify">
+### Default Notification
+
+The default notification system allows you to display messages that appear above the minimap, similar to GTA Online Notifications ensuring they are both noticeable and non-intrusive during gameplay. These notifications can include headers, icons, colors, and text, providing flexibility to fit various use cases.
+
+#### Adding a Notification
+
+Adding a notification is straightforward. Use the following function to create a notification:
+
+<Code code={`lua
+-- Example with header
+local data = {
+    header = 'fas fa-envelope',
+    text = 'My default notification'
+}
+-- Example without header
+local data = {
+    text = 'My default notification'
+}
+
+local data = {
+    header = {
+        text = 'RESPECT',
+        color = "#ee1c3e",
+        icon = 'fas fa-chevron-down'
+    },
+    text = 'Your respect is low!'
+}
+local serial = exports['ZSX_UIV2']:DefaultNotification(data)
+`} lang="lua" title="client.lua" frame='terminal' mark={`exports['ZSX_UIV2']:DefaultNotification(data)`} />
+
+#### Properties
+
+##### Required and Optional Properties
+
+| Property        | Type     | Description                                             | Required |
+|-----------------|----------|---------------------------------------------------------|----------|
+| `header`        | `table`  | Defines the notification header.                        | ❌ No    |
+| `text`          | `string` | The main body text of the notification.                 | ✅ Yes    |
+| `header.text`   | `string` | Header text content.                                    | ✅ Yes (if you use header)   |
+| `header.color`  | `string` | Hex color code for the header text.                     | ❌ No    |
+| `header.icon`   | `string` | FontAwesome class for an optional header icon.          | ❌ No    |
+
+<Aside>
+The export returns a serial, which can be useful if you need to remove it later.
+</Aside>
+
+
+#### Removing a  Default Notification
+
+To remove a notification before its duration ends, use the serial returned when the notification was created. This serial uniquely identifies the notification, allowing you to remove it as needed.
+
+<Code code="exports['ZSX_UIV2']:DefaultNotification_Remove(serial)" lang="lua" mark="serial" />
+</TabItem>
+<TabItem label = " Help Notify"> 
+### Help Notification
+Help Notifications are displayed in the top-left corner of the screen. They are specifically designed to manage job-related updates and other critical tasks.
+
+#### Adding a Help Notification
+
+To add a Help Notification, you can use the following function:
+
+```lua
+exports['ZSX_UIV2']:HelpNotification(data)
+```
+
+The `data` object can contain:
+
+##### Example with Text as an Object (Tasks List)
+
+```lua
+local data = {
+    icon = 'fas fa-warehouse',
+    header = 'Task Example',
+    text = {
+        {
+            name = 'point1', -- Make sure to add a name, otherwise it won't be added!
+            active = true, -- Ensure one element is set as active!
+            complete = false,
+            text = 'Go to Point #1',
+        }, 
+        {
+            name = 'point2',
+            active = false,
+            complete = false,
+            text = 'Finish by going to Point #2',
+        }
+    }
+}
+```
+
+##### Example with Text as a String
+
+```lua
+local data = {
+    icon = 'fas fa-warehouse',
+    header = 'Task Example',
+    text = 'Do anything else!'
+}
+```
+
+#### Data Layout
+
+##### Help Notification Properties
+
+| Key     | Value     | Description                                      | Optional |
+|---------|-----------|--------------------------------------------------|----------|
+| `icon`  | `string`  | Icon of the help notification.                  | ❌ No    |
+| `header`| `string`  | Header of the help notification.                | ❌ No    |
+| `text`  | `string`/`object` | Text or tasks for the help notification. | ❌ No    |
+
+#### Text as Object Layout
+
+| Key       | Value     | Description                                      | Optional |
+|-----------|-----------|--------------------------------------------------|----------|
+| `name`    | `string`  | Unique name of the task.                        | ❌ No    |
+| `active`  | `boolean` | Marks the task as active (current).             | ❌ No    |
+| `complete`| `boolean` | Marks the task as completed.                    | ❌ No    |
+| `text`    | `string`  | Description of the task.                        | ❌ No    |
+
+#### Manually Updating a Stage
+
+For tasks using text as an object, you can update the stage manually:
+
+```lua
+exports['ZSX_UIV2']:HelpNotification_UpdateStage(data)
+```
+
+##### Example
+
+```lua
+local data = {
+    stage = 'point1',
+    key = 'active',
+    value = true
+}
+```
+
+| Key      | Value     | Description                                      |
+|----------|-----------|--------------------------------------------------|
+| `stage`  | `string`  | Unique name of the stage.                       |
+| `key`    | `string`  | Key of the element to update.                   |
+| `value`  | `boolean` | New value for the key.                          |
+
+#### Setting a Stage as Active
+
+```lua
+exports['ZSX_UIV2']:HelpNotification_SetStageAsActive(stageName)
+```
+
+#### Marking a Stage as Complete
+
+```lua
+exports['ZSX_UIV2']:HelpNotification_SetStageAsComplete(stageName)
+```
+
+#### Removing a Help Notification
+
+To remove a Help Notification:
+
+```lua
+exports['ZSX_UIV2']:HelpNotification_Remove()
+```
+</TabItem>
+
+
+<TabItem label ="Progressbar"> 
+
+
+### Progress Bar
+
+Progress Bar Allow you to visually represent tasks with a timed progress bar.
+
+#### Adding a Progress Bar
+
+Use the following function to add a progress bar:
+
+```lua
+exports['ZSX_UIV2']:ProgressBar(text, duration, onComplete, onCancel, canCancel, disableControls, anim, prop1, prop2)
+```
+
+#### Arguments
+
+| Argument        | Type     | Description                                      | Optional |
+|-----------------|----------|--------------------------------------------------|----------|
+| `text`          | `string` | Text displayed for the task.                    | ❌ No    |
+| `duration`      | `number` | Duration of the task in milliseconds.           | ❌ No    |
+| `onComplete`    | `function`| Callback when the task completes.               | ❌ No    |
+| `onCancel`      | `function`| Callback when the task is canceled.             | ❌ No    |
+| `canCancel`     | `boolean` | Determines if the task can be canceled.         | ✅ Yes     |
+| `disableControls`| `object` | Disables specific controls.                     | ✅ Yes     |
+| `anim`          | `object` | Animation details for the progress bar.         | ✅ Yes    |
+| `prop1`         | `object` | First prop details for the task.                | ✅ Yes    |
+| `prop2`         | `object` | Second prop details for the task.               | ✅ Yes    |
+
+##### `disableControls` Object
+
+| Key            | Value     | Description                                      | Optional |
+|----------------|-----------|--------------------------------------------------|----------|
+| `disable_mouse`| `boolean` | Disables mouse movement.                        | ✅ Yes    |
+| `disable_walk` | `boolean` | Disables player movement.                       | ✅ Yes    |
+| `disable_driving`| `boolean`| Disables vehicle movement.                      | ✅ Yes    |
+| `disable_combat`| `boolean`| Disables combat actions.                        | ✅ Yes    |
+
+##### `anim` Object
+
+| Key       | Value     | Description                                      | Optional |
+|-----------|-----------|--------------------------------------------------|----------|
+| `dict`    | `string`  | Dictionary for the animation.                   | ❌ No    |
+| `clip`    | `string`  | Animation clip set.                             | ❌ No    |
+| `blendIn` | `number`  | Blend in time.                                  | ✅ Yes    |
+| `blendOut`| `number`  | Blend out time.                                 | ✅ Yes    |
+| `duration`| `number`  | Animation duration.                             | ✅ Yes    |
+| `flag`    | `number`  | Animation flags.                                | ✅ Yes    |
+| `playbackRate`| `number`| Playback rate.                                 | ✅ Yes    |
+| `lockX`   | `boolean` | Locks X-axis.                                   | ✅ Yes    |
+| `lockY`   | `boolean` | Locks Y-axis.                                   | ✅ Yes    |
+| `lockZ`   | `boolean` | Locks Z-axis.                                   | ✅ Yes    |
+
+##### `prop1` and `prop2` Objects
+
+| Key       | Value     | Description                                      | Optional |
+|-----------|-----------|--------------------------------------------------|----------|
+| `dict`    | `string`  | Dictionary for the prop.                        | ❌ No    |
+| `model`   | `string`  | Model for the prop.                             | ❌ No    |
+| `bone`    | `string`  | Bone for the prop.                              | ✅ Yes    |
+| `pos`    | `vector3` | Position for the prop.                          | ✅ Yes    |
+| `rot`    | `vector3` | Rotation for the prop.                          | ✅ Yes   |
+
+
+#### Example Usage
+
+<Code code={`local text = 'Example Task'
+local duration = 10000
+local onComplete = function()
+    print('Task completed!')
+end
+
+local onCancel = function()
+    print('Task canceled!')
+end
+
+local canCancel = true
+
+local disableControls = {
+    disable_mouse = true,
+    disable_walk = true,
+    disable_driving = true,
+    disable_combat = true
+}
+
+local anim = {
+    dict = 'anim@heists@ornate_bank@hack',
+    clip = 'hack_loop',
+    blendIn = 8.0,
+    blendOut = 8.0,
+    duration = 10000,
+    flag = 1,
+    playbackRate = 1.0,
+    lockX = false,
+    lockY = false,
+    lockZ = false
+}
+
+local prop1 = {
+    dict = 'anim@heists@ornate_bank@hack',
+    model = 'prop_hack_phone',
+    bone = 'IK_R_Hand',
+    pos = vector3(0.0, 0.0, 0.0),
+    rot = vector3(0.0, 0.0, 0.0)
+}
+
+local prop2 = {
+    dict = 'anim@heists@ornate_bank@hack',
+    model = 'prop_hack_phone',
+    bone = 'IK_R_Hand',
+    pos = vector3(0.0, 0.0, 0.0),
+    rot = vector3(0.0, 0.0, 0.0)
+}
+
+exports['ZSX_UIV2']:ProgressBar(text, duration, onComplete, onCancel, canCancel, disableControls, anim, prop1, prop2)`} lang="lua">
+</Code>
+</TabItem>
+<TabItem label = "TextUI"> 
+### Text UI
+
+The TextUI shows you a button prompt with a message on the screen. It is useful for displaying information to the player or prompting them to perform an action.
+
+#### Adding a non-Persistent Text UI (non threaded)
+
+To add a Text UI, use the following function:
+
+<Code code={`local serial = exports['ZSX_UIV2']:TextUI(key, text, duration, onComplete, onFailure)`} lang="lua"> </Code>
+
+#### Arguments
+
+| Argument        | Type     | Description                                      | Optional |
+|-----------------|----------|--------------------------------------------------|----------|
+| `key`           | `string` | Key for the Text UI.                            | ❌ No    |
+| `text`          | `string` | Text displayed for the Text UI.                 | ❌ No    |
+| `duration`      | `number` | Duration of the Text UI in milliseconds (requires onComplete and onFailure).        | ✅ Yes    |
+| `onComplete`    | `function`| Callback when the Text UI completes.            | ✅ Yes    |
+| `onFailure`     | `function`| Callback when the Text UI fails.                | ✅ Yes    |
+
+#### Adding a Persistent Text UI (threaded)
+
+Some scripts may require the Text UI to run in a separate thread. To add a threaded Text UI, use the following function:
+
+<Code code={`exports['ZSX_UIV2']:TextUI_Persistent(key, text, duration, onComplete, onFailure)`} lang="lua"> </Code>
+
+Objects are the same as the non-threaded version.
+
+#### Removing a Persistent Text UI
+
+To remove a persistent Text UI, use the following function:
+
+<Code code={`exports['ZSX_UIV2']:TextUI_RemovePersistent(animComplete))`} lang="lua"> </Code>
+
+#### Arguments
+
+| Argument        | Type     | Description                                      | Optional |
+|-----------------|----------|--------------------------------------------------|----------|
+| `animComplete`  | `boolean`| Determines if the animation should complete.    | ✅ Yes    |
+
+
+### Remove a non-Persistent Text UI
+
+To remove a non-persistent Text UI, use the following function:
+
+<Code code={`exports['ZSX_UIV2']:TextUI_Remove(serial, animComplete)`} lang="lua"> </Code>
+
+#### Arguments
+
+| Argument        | Type     | Description                                      | Optional |
+|-----------------|----------|--------------------------------------------------|----------|
+| `serial`        | `string` | Serial of the Text UI.                          | ❌ No    |
+| `animComplete`  | `boolean`| Determines if the animation should complete.    | ✅ Yes    |
+
+
+
+</TabItem>
+
+<TabItem label="Point">
+
+### Point
+
+The Point system allows you to display a point in the world with a text label. This is useful for marking locations or objectives for players.
+
+#### Adding a Point
+
+To add a point, use the following function:
+
+<Code code={`local serial = exports['ZSX_UIV2']:AddPoint(icon, coords, text, options)`} lang="lua"> </Code>
+
+#### Arguments
+
+| Argument        | Type     | Description                                      | Optional |
+|-----------------|----------|--------------------------------------------------|----------|
+| `icon`          | `string` | Icon for the point.                             | ❌ No    |
+| `coords`        | `vector3`| Coordinates for the point.                      | ❌ No    |
+| `text`          | `string` | Text for the point.                             | ✅ Yes    |
+| `options`       | `table`  | Additional options for the point.               | ✅ Yes    |
+
+#### Options
+
+| Key            | Value     | Description                                      | Optional |
+|----------------|-----------|--------------------------------------------------|----------|
+| `onNearby`    | `function`| Callback when the player is near the point.      | ✅ Yes    |
+| `removeOnNearby`  | `boolean`| Determines if the point should be removed when the player is nearby.      | ✅ Yes    |
+| `distance`     | `number` | Distance to trigger when its drawn.     | ✅ Yes    |
+
+#### Removing a Point
+
+To remove a point, use the following function:
+
+<Code code={`exports['ZSX_UIV2']:RemovePoint(serial)`} lang="lua"> </Code>
+
+#### Arguments
+
+| Argument        | Type     | Description                                      | Optional |
+|-----------------|----------|--------------------------------------------------|----------|
+| `serial`        | `string` | Serial of the point.                            | ❌ No    |
+
+
+#### Example Usage
+
+<Code code={`local icon = 'fas fa-map-marker-alt'
+local coords = vector3(0.0, 0.0, 0.0)
+local text = 'Example Point'
+local options = {
+    onNearby = function()
+        print('Player is near the point!')
+    },
+    removeOnNearby = true,
+    distance = 10.0
+} 
+
+local serial = exports['ZSX_UIV2']:AddPoint(icon, coords, text, options)`} lang="lua"> </Code>
+
+
+ </TabItem>
+ <TabItem label = "Radar">
+<Code code={`exports['ZSX_UIV2']:DisplayRadar(boolean, force)`} lang="lua"> </Code>
+
+#### Arguments
+
+| Argument        | Type     | Description                                      | Optional |
+|-----------------|----------|--------------------------------------------------|----------|
+| `boolean`       | `boolean` | Determines if the radar should be displayed.     | ❌ No    |
+| `force`         | `boolean` | Forces the radar to be displayed / hidden without animation.                | ✅ Yes    |
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+
+<TabItem label = "Getting Values">
+## Getting Values (Storage)
+
+<Aside>There are no example codes or explanations for returning values because they simply return values.</Aside>
+
+<Tabs>
+<TabItem label = "Color">
+
+### Get Color
+
+To get the color of a player, use the following function:
+
+<Code code={`local color = exports['ZSX_UIV2']:GetColor(rgb)`} lang="lua"> </Code>
+
+#### Arguments
+
+| Argument        | Type     | Description                                      | Optional |
+|-----------------|----------|--------------------------------------------------|----------|
+| `rgb`           | `boolean` | Determines if the color should be returned as RGB or hex. | ✅ Yes    |
+</TabItem> 
+
+<TabItem label = "Type">
+
+<Tabs>
+<TabItem label = "Default HUD">
+### Get HudType
+<Code code={`exports['ZSX_UIV2']:GetHudType()`} lang="lua"> </Code>
+</TabItem>
+<TabItem label = "Car HUD">
+### GetCarHudType
+<Code code={`exports['ZSX_UIV2']:GetCarHudType())`} lang="lua"> </Code>
+</TabItem>
+
+<TabItem label = "Notification">
+### GetNotificationType
+<Code code={`exports['ZSX_UIV2']:GetNotificationType()`} lang="lua"> </Code>
+</TabItem>
+
+<TabItem label = "Help Notification">
+### GetHelpNotificationType
+<Code code={`exports['ZSX_UIV2']:GetHelpNotificationType()`} lang="lua"> </Code>
+</TabItem>
+
+<TabItem label = "Progressbar">
+### GetProgressbarType
+<Code code={`exports['ZSX_UIV2']:GetProgressBarType()`} lang="lua"> </Code>
+</TabItem>
+
+
+</Tabs>
+
+</TabItem>
+
+<TabItem label ="Options">
+<Tabs>
+<TabItem label = "Default HUD">
+### GetHudOptions
+<Code code={`exports['ZSX_UIV2']:GetHudOptions()`} lang="lua"> </Code>
+</TabItem>
+
+<TabItem label = "Car HUD">
+### GetCarHudOptions
+<Code code={`exports['ZSX_UIV2']:GetCarHudOptions()`} lang="lua"> </Code>
+</TabItem>
+<TabItem label = "Notification">
+### GetNotificationOptions
+<Code code={`exports['ZSX_UIV2']:GetNotficiationOptions()`} lang="lua"> </Code>
+</TabItem>
+<TabItem label = "Help Notification">
+### GetHelpNotficiationOptions
+<Code code={`exports['ZSX_UIV2']:GetHelpNotficiationOptions()`} lang="lua"> </Code>
+</TabItem>
+<TabItem label = "Progressbar">
+### GetProgressBarOptions
+<Code code={`exports['ZSX_UIV2']:GetProgressBarOptions()`} lang="lua"> </Code>
+</TabItem>
+</Tabs>
+</TabItem>
+<TabItem label="Is Configuration Done">
+### IsConfigurationDone
+<Code code={`exports['ZSX_UIV2']:IsConfigurationDone()`} lang="lua"> </Code>
+</TabItem>
+<TabItem label ="Get Current Screen">
+### GetCurrentScreen
+<Code code={`exports['ZSX_UIV2']:GetCurrentScreen()`} lang="lua"> </Code>
+</TabItem>
+<TabItem label ="UIBusy">
+### IsUIBusy
+<Code code={`exports['ZSX_UIV2']:IsUIBusy()`} lang="lua"> </Code>
+</TabItem>
+<TabItem label ="PauseMenuActive">
+### IsPauseMenuActive
+<Code code={`exports['ZSX_UIV2']:IsPauseMenuActive()`} lang="lua"> </Code>
+</TabItem>
+</Tabs>
+
+
+</TabItem>
+<TabItem label="Opening Menus">
+## Menus
+<Tabs>
+<TabItem label ="Open Configuration Menu">
+### Open Configuration Menu
+<Code code={`exports['ZSX_UIV2']:OpenConfiguration()`} lang="lua"> </Code>
+</TabItem>
+<TabItem label ="Open Main Menu">
+### Open Main Menu
+<Code code={`exports['ZSX_UIV2']:OpenMainMenu()`} lang="lua"> </Code>
+</TabItem>
+<TabItem label ="Open Settings Menu">
+### Open Settings Menu
+<Code code={`exports['ZSX_UIV2']:OpenSettings()`} lang="lua"> </Code>
+</TabItem>
+<TabItem label ="Open Cinematic Menu">
+### Open Cinematic Menu
+<Code code={`exports['ZSX_UIV2']:Cinematic()`} lang="lua"> </Code>
+</TabItem>
+</Tabs>
+</TabItem>
+</Tabs>
+
+
+
+
+
+--- 
+
+---
+
+

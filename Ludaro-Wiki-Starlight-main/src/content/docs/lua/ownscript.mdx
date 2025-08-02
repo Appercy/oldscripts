@@ -1,0 +1,61 @@
+---
+title: 4. Eigenes Script erstellen!
+description: Lerne, wie du dein eigenes Lua Script erstellst und ausführst.
+---
+
+import { CardGrid, LinkCard, Code, Aside } from '@astrojs/starlight/components';
+
+# Eigenes Script erstellen
+
+Um dein eigenes Lua-Skript zu erstellen, benötigst du einen Texteditor wie Notepad++ oder Visual Studio Code. Diese Programme helfen dir, den Code zu schreiben und zu organisieren.
+
+## Struktur 
+
+Wie schon vorher beschrieben besteht eine resource aus einer `fxmanifest.lua` und den eigentlichen Skripten.
+
+### fxmanifest.lua
+
+<Code lang="lua" code={`fx_version 'cerulean' -- Die Version von FiveM
+game 'gta5' -- Das Spiel für das die Ressource bestimmt ist
+
+client_scripts { -- Hier werden alle Client-Skripte geladen
+    'client.lua'
+}
+
+server_scripts { -- Hier werden alle Server-Skripte geladen
+    'server.lua'
+}`}></Code>
+
+In diesem Beispiel definieren wir die Metadaten der Ressource, indem wir die `fx_version` und das Spiel, für das die Ressource bestimmt ist, angeben. Wir geben auch an, welche Skripte in der Ressource geladen werden sollen, indem wir die `client_scripts` und `server_scripts` Abschnitte definieren.
+
+
+<Code lang="lua" code={`RegisterCommand('helloclient', function() -- Registriert den Befehl /hello
+    print('Hallo, Welt!') -- Gibt 'Hallo, Welt!' in der Konsole aus
+end)`} title="client.lua"></Code>
+
+In diesem Beispiel registrieren wir den Befehl `/hellocient` und geben 'Hallo, Welt!' in der Client Konsole aus, wenn der Befehl ausgeführt wird.
+
+
+
+<Code lang="lua" code={`RegisterCommand('helloserver', function() -- Registriert den Befehl /hello
+    print('Hallo, Welt!') -- Gibt 'Hallo, Welt!' in der Konsole aus
+end)`} title="server.lua"></Code>
+
+In diesem Beispiel registrieren wir den Befehl `/helloserver` und geben 'Hallo, Welt!' in der Server Konsole aus, wenn der Befehl ausgeführt wird.
+
+und das war es auch schon! du hast dein erstes Lua Skript erstellt!
+
+## Nächste Schritte
+
+- Such dir ein Projekt aus und fang an zu coden!
+
+- Lerne, wie du mit Lua in FiveM umgehst und wie du Resourcen erstellst.
+
+- Warte bis ich die Wiki erweitere!
+
+
+
+
+
+
+

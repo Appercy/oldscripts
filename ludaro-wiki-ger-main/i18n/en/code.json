@@ -1,0 +1,29 @@
+{
+  "help.translate": {
+    "message": "Help us translate this page!"
+  },
+  "homepage.startLearningButton": {
+    "message": "🐣 Start learning Lua today! 🐣"
+  },
+  "homepage.subTitle": {
+    "message": "🐣 Lua Learning for Everyone! 🐣"
+  },
+  "features.easytouse.title": {
+    "message": "Easy to Use"
+  },
+  "features.easytouse.text": {
+    "message": "The Ludaro Wiki is designed to be used by anyone and allows everyone to learn something new, even without prior knowledge!"
+  },
+  "features.opensource.title": {
+    "message": "Open Source"
+  },
+  "features.opensource.text": {
+    "message": "The Ludaro Wiki is an open-source project, which means it can be edited by anyone – including you if you want to make changes! Just click the edit button and you're ready to go!"
+  },
+  "features.community.title": {
+    "message": "Community"
+  },
+  "features.community.text": {
+    "message": "On our Discord (https://discord.ludaro.de), you'll always find people ready to help you! Whether you have questions or just want to chat with others, we're here for you!"
+  }
+}

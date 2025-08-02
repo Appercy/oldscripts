@@ -1,0 +1,130 @@
+---
+title: Configuration
+sidebar: {
+    order: 3
+}
+---
+import { FileTree, Steps, Code } from '@astrojs/starlight/components';
+export const highlights = [' --removeCoinsFunc(vehData.price)', ' --Apply the code check if user have exclusive currency required for vehicle price. Example ']
+
+### Adding A store 
+
+Stores are defined in the `config_dealers.lua` file. 
+
+<FileTree>
+
+- ZSX_Dealership
+        - shared
+            - **config_dealers.lua**
+
+</FileTree>
+
+
+To add a store follow these steps:
+
+
+<Steps>
+1. **Open the Configuration File**  
+   Open the `config_dealers.lua` file located in the `shared` folder of the resource.
+
+   2. **Copy the Example Store**
+    Copy the example store and paste it below the last store in the file.
+    ```lua
+    ['my_new_shop'] = {
+        blip = {
+            sprite = 810, -- For the full list of blips: https://docs.fivem.net/docs/game-references/blips/
+            color = 2, -- For the full list of blips colors: https://docs.fivem.net/docs/game-references/blips/
+            size = 1.0, -- Size of the blip on the map/minimap.
+            name = "My new Dealership", -- Display name of the blip on map.
+            coords = vector3(-56.95651, -1096.566, 26.42233), -- Coords for the blip on the map.
+        },
+        vehicle = {
+            coords = vector3(-15.29679, -1097.014, 26.67208), -- Where to spawn the vehicle after the purchase is complete.
+            heading = 161.1845, -- Heading of the spawned vehicle.
+        },
+        rest = {
+            vehicle_colors = {
+                primary = 112, -- Vehicle colors on the dealership. List: https://wiki.rage.mp/index.php?title=Vehicle_Colors
+                secondary = 112, -- Vehicle colors on the dealership. List: https://wiki.rage.mp/index.php?title=Vehicle_Colors
+            },
+        },
+        zone = {
+            coords = vector3(-56.76, -1097.97, 25.51), -- Coords for the target/non-target init.
+            heading = 31.17, -- Heading for the target init.
+            minZ = 25.0, -- Target minimal Z coords.
+            maxZ = 26.51, -- Target max Z coords.
+            width = 2.0, -- Width of the box for target.
+            enableDebug = false, -- Enable debug for target.
+        },
+        camera = 'underground', -- Do not change that until you know what you're doing.
+    }
+    ```
+    3. **Configure the Store**
+    Configure the store to your liking. You can change the blip, vehicle, rest, zone, and camera settings to customize the store.
+
+    4. **Save the File**
+    Save the file and restart your server to apply the changes.
+
+    5. **Add Vehicles into the dealership from the database**
+    Add vehicles into the dealership from the database. You can do this by adding the vehicles into the `ZSX_Dealership` table in your database and then under the column dealer_key you add your store name. (in our example its my_new_shop)
+    Add atleast one vehicle
+
+    6. **Enjoy!**
+   
+</Steps>
+
+## Using Exclusive Payment / content
+
+To use the exclusive payment system you need to enable it inside of 
+
+
+<FileTree>
+
+- ZSX_Dealership
+        - shared
+            - **config_exclusive.lua**
+
+</FileTree>
+
+<Code wrap code="Exclusive.Retrieval = {
+    use = true, -- SET USE TO TRUE 
+    type = 'COINS', 
+}" lang="lua" ins="true" title="shared/config_exclusive.lua"></Code>
+
+Now we configure the function that will be used to retrieve the currency from the player Head to:
+
+<FileTree>
+- ZSX_Dealership
+        - server
+            - functions
+                - **sv_editable.lua**
+</FileTree>
+
+<Code wrap code="Editable.ExclusivePayCheck = function(src, vehData)
+    --Apply the code check if user have exclusive currency required for vehicle price. Example 
+    local coins = 2000
+    if coins >= vehData.price then
+        return true
+    end
+    return false
+
+    -- For help contact on discord discord.gg/MF9uVuWrQn
+end
+
+
+Editable.ExclusivePayForVehicle = function(src, vehData)
+    local coins = 2000
+    local receivedPay = false
+    if coins >= vehData.price then
+        --removeCoinsFunc(vehData.price)
+        receivedPay = true
+    else
+        receivedPay = false
+    end
+    return receivedPay
+    -- For help contact on discord discord.gg/MF9uVuWrQn
+end" lang="lua" mark={highlights} title="server/functions/sv_editable.lua"> </Code>
+
+You have to add the function that will remove the currency from the player and check if the player has enough currency to buy the vehicle.
+
+After this you can configure which vehicle is Exclusive to be bought with the currency you do this by editing the vehicle in the database by editing the row isExclusive to 1

@@ -1,0 +1,130 @@
+---
+sidebar_position: 1
+title: Tubehosting FiveM Artifacts Updaten
+sidebar_label: Tubehosting FiveM Artifacts Updaten
+---
+
+:::note
+
+Um diese Seite zu verstehen, solltest du ein wenig in Linux Vertaut sein, falls du es nicht bist sei Vorsichtig! und lese Langsam!
+
+:::
+
+Um TxAdmin zu updaten müsssen wir diese Schritte machen:
+
+1\. Server Stoppen (TXADMIN STOPPEN!!)
+
+2\. Neuste CFX Version Runterladen
+
+3\. CFX Version Entpacken
+
+4\. Server Starten (TXADMIN STARTEN!!)
+
+Wir gehen jetzt jeden Schritt dürch! :)
+
+## 1. Server Stoppen (TXADMIN STOPPEN!!)
+
+---
+
+Um Sicherzugehen das nichts kapput geht musst du erstmal deinen server stoppen das machst du in dem du erstmal dich mit Terminus, oder einem anderen SSH Client auf deinem Server Verbindest, falls du nicht weist was ein SSH Client ist schau[ \[hier\]](https://www.variomedia.de/faq/Was-ist-ein-SSH-Zugang-und-wie-kann-ich-ihn-nutzen/article/93)
+
+aber meist ist der SSH Client in Programmen wie Terminus, Putty oder auch selten in ein Terminal aufgebaut, vorrausgesetzt ist das du diese SSH Verbindung hast und eingeloggt bist mit deinem Benutzer!
+
+:::note
+
+Ich werde in meinem Guide Alle SSH Programme als "Terminal" Betiteln, aber damit ist immer das gemeint womit **du** deine verbindung hast, sei es putty, oder auch terminus. oder ein anderes programm!
+
+:::
+
+Sobald du eingeloggt bist, musst du erstmal verstehen das dein server meistens in einem "screen" läuft, das ist sozusagen ein zweiter bildschirm, damit wenn du weg bist aus der SSH Verbindung dein server sich nicht schliest,
+
+und jetzt gibst du einfach mal&#x20;
+
+```
+screen -ls
+```
+
+&#x20;in dein Terminal ein,&#x20;
+
+&#x20;es gibt jetzt 2 möglichkeiten, entweder es gibt dir jetzt einen fehler zurück in dem er sagt das es den befehl nicht gibt (in dem fall ist dein server garnicht an, oder du musst einen anderen weg finden den server zu stoppen, dafür solltest du die person die dein server aufgebaut hat oder deinem hoster melden und fragen wie man das macht)
+
+&#x20;
+
+für uns ist wichtig das wir den namen haben, dieser ist nach einer 1-9 stelligen zahlenkombination zu finden (bei mir wäre das zb in der zweiten zeile discordbot)
+
+nun geben wir ein
+
+```
+screen -r [SCREENNAME]
+```
+
+SCREENNAME Solltet ihr dabei mit eurem eigenen namen den wir im vorigen schritt rausgefunden haben ersetzen,&#x20;
+
+nun dürftet ihr eure TxAdmin/Fivem Console sehen,&#x20;
+
+Wenn ja, Drückt ihr jetzt einmal STRG + C (Dadürch Stoppt ihr den server)
+
+Jetzt das Terminal nicht Schließen!
+
+## 2. Neuste CFX Version Runterladen
+
+---
+
+[auf dieser website](<https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/)>)\
+seht ihr alle CFX Versionen die man sich für Linux Runterladen kann,
+
+:::danger
+
+Die "Latest Recommended" ist nicht die neuste! und wird euch auch daher eine Warnung anzeigen! aber es ist die stabilste, um keine warnung mehr zu haben solltet ihr die neuste version runterladen, :)
+
+:::
+
+Zum jetzigen zeitpunkt ist das 7330
+
+nun macht ihr Rechtsklick auf die Neuste Version und Drückt auf "Link kopieren" oder etwas ähnliches,
+
+diesen Link benötigt ihr nun in der SSH Verbindung die wir aufgemacht haben,
+
+dort geben wir nun ein&#x20;
+
+```
+wget [LINK]
+```
+
+LINK (ohne Eckige Klammern) muss dabei euren link Representieren, und wenn ihr nun Enter drückt sieht ihr auch einen Ladebalken und wie euer Server von dem Downloadlink das neue Update runterlädt..
+
+Das Terminal bitte Immernoch nicht Schließen!
+
+## # 3. CFX Version Entpacken
+
+---
+
+Nun habt ihr die Neue Version in einer Kompressierten Form heruntergeladen, ihr müsst diese nun Entpacken,
+
+das ganze macht ihr indem ihr
+
+```
+tar xf fx.tar.xz
+```
+
+in eure Konsole eingebt, sobald das fertig ist, habt ihr eure CFX Version Geupdated1
+
+Das Terminal bitte Immernoch nicht Schließen!
+
+## # 4. Server Starten (TXADMIN STARTEN!!)
+
+---
+
+Nun müsst ihr nurnoch&#x20;
+
+```bash
+./run.sh
+```
+
+oder auch manchmal
+
+```bash
+./start.sh
+```
+
+eingeben, und nun seht ihr wieder eure Vertraute TxAdmin Konsole, nun müsst ihr nur noch hingehen und STRG + A + D Drücken (könnt aber auch einfach euer Terminal schließen) um euch aus dem Screen rauszuschmeißen, ab hier dürft ihr dann sobald ihr die TxAdmin Konsole nichtmehr seht auch gerne Die Verbindung und auch das Terminal Schließen!

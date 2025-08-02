@@ -1,0 +1,63 @@
+---
+sidebar_position: 1
+title: Einen Five-M Server Hosten auf deinem Eigenen PC
+sidebar_label: Einen Five-M Server Hosten auf deinem Eigenen PC
+---
+:::warning Vorraus Information:
+Wenn du einen FiveM Server auf deinem eigenen PC hosten möchtest, solltest du wissen, dass du diesen NICHT für die Öffentlichkeit freischalten solltest, da dies ein Sicherheitsrisiko darstellen kann und unbefugten Zugriff ermöglichen könnte. Es ist ratsam, deinen eigenen PC-Server nur für persönliche Tests und Experimente zu verwenden.
+:::
+Lokal = Auf deinem eigenen PC
+
+# Was benötige ich?
+Diese Programme müssen installiert werden:
+- [ ] [MariaDB](https://mariadb.com/downloads/community/) 
+- [ ] Ein beliebiges Entpackungs-Tool, z.B. [Winrar](http://winrar.de)
+- [ ] [HeidiSQL](https://www.heidisql.com/) (für einen besseren Datenbankzugriff)
+
+:::warning 
+Es gibt die Möglichkeit, XAMPP zu installieren, was die Einrichtung vereinfacht, aber dies wird **NICHT** empfohlen, da XAMPP als unsicher und instabil gilt. XAMPP enthält sowohl den Webserver Apache als auch MariaDB und phpMyAdmin in einem Paket. Falls du dich für XAMPP entscheidest, musst du dich selbstständig darüber informieren.
+:::
+
+Diese Dateien müssen heruntergeladen werden:
+- [ ] [FXServer](https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/) am besten die neueste Version (6271)
+
+Du benötigst mindestens 10 GB freien Speicherplatz (mehr ist besser) und etwas Zeit. 😄
+
+## MariaDB installieren
+
+1. Lade MariaDB von der offiziellen Website herunter und installiere es.
+2. Während der Installation wirst du aufgefordert, ein Root-Passwort festzulegen. Merke dir dieses Passwort gut.
+
+Hurra! Du hast jetzt deine eigene Datenbank! Du kannst dich mit HeidiSQL auf deine Datenbank verbinden.
+
+### HeidiSQL einrichten
+
+1. Lade HeidiSQL von der offiziellen Website herunter und installiere es.
+2. Öffne HeidiSQL und erstelle eine neue Verbindung zu deiner MariaDB-Datenbank. Gib die folgenden Verbindungsdetails ein:
+   - Netzwerktyp: `MariaDB or MySQL (TCP/IP)`
+   - Hostname/IP: `127.0.0.1`
+   - Benutzer: `root`
+   - Passwort: Das während der MariaDB-Installation festgelegte Passwort
+
+   Klicke auf "Öffnen", um die Verbindung zu deiner Datenbank herzustellen.
+
+:::info 
+Wichtig! Da dies deine Datenbank ist, muss sie **immer** gestartet sein, bevor du deinen Server startest. Öffne einfach MariaDB. 🙂
+:::
+Diese Datenbank ist noch leer (die Zugangsdaten sind Benutzername: root und das Passwort, das du bei der Installation festgelegt hast). Sie wird mit Daten gefüllt, wenn du deinen FiveM-Server einrichtest.
+
+## FiveM-Server einrichten
+
+1. Erstelle an einem Ort deiner Wahl einen neuen Ordner, den du dir merken kannst.
+2. In diesem neuen Ordner erstellst du einen weiteren Ordner namens "fx-server" und entpackst dort die FXServer-Daten, die du zuvor heruntergeladen hast.
+3. Starte `FXServer.exe` (dies ist dein Server). 
+4. Sobald der Server gestartet ist, erhältst du einen Code, den du auf der Website [http://127.0.0.1:40120](http://127.0.0.1:40120) eingibst, um deinen Server zu verifizieren.
+5. Wähle die "Popular Templates" (beliebte Vorlagen) für die Installation deines Servers.
+6. Gib deinen Keymaster-Schlüssel ein, den du von [keymaster.fivem.net](https://keymaster.fivem.net) erhalten hast.
+
+In dem Ordner "txData" ist ein neuer Ordner mit dem Namen "ESXLEGACY" oder "QBCore" entstanden. Dort findest du deine `server.cfg` (für Servereinstellungen) und deinen "resources"-Ordner, in den du deine Ressourcen hochladen kannst. 😊
+
+:::info
+Die Website [http://localhost:40120](http://localhost:40120) oder [http://127.0.0.1:40120](http://127.0.0.1:40120) ist dein txAdmin-Panel. Hier kannst du deinen gesamten Server verwalten.
+:::
+Diese Anleitung ist eine erweiterte Version der [offiziellen CFX-Website](https://docs.fivem.net/docs/server-manual/setting-up-a-server/), die die Installation einer Datenbank einschließt. Alle Credits für diese Seite gehen an CFX. 😄

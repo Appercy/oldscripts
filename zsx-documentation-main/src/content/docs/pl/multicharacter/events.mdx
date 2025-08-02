@@ -1,0 +1,60 @@
+---
+title: Zdarzenia
+---
+
+import { Code, Steps, Tabs, TabItem} from '@astrojs/starlight/components'
+
+<Code wrap code="-- stan @boolean
+RegisterNetEvent('ZSX_Multicharacter:Listener:WelcomeScreenStateChanged')
+AddEventHandler('ZSX_Multicharacter:Listener:WelcomeScreenStateChanged', function(state)
+end)
+-- brak
+RegisterNetEvent('ZSX_Multicharacter:Listener:MainInitialized')
+AddEventHandler('ZSX_Multicharacter:Listener:MainInitialized', function()
+end)
+
+-- brak
+RegisterNetEvent('ZSX_Multicharacter:Listener:MainFinishedWork')
+AddEventHandler('ZSX_Multicharacter:Listener:MainFinishedWork', function()
+end)
+
+-- brak
+RegisterNetEvent('ZSX_Multicharacter:Listener:WelcomeScreenStateChanged')
+AddEventHandler('ZSX_Multicharacter:Listener:WelcomeScreenStateChanged', function()
+end)
+
+-- brak
+RegisterNetEvent('ZSX_Multicharacter:Listener:MulticharacterInitialized')
+AddEventHandler('ZSX_Multicharacter:Listener:MulticharacterInitialized', function()
+end)
+
+-- brak
+RegisterNetEvent('ZSX_Multicharacter:Listener:MainFinishedWork')
+AddEventHandler('ZSX_Multicharacter:Listener:MainFinishedWork', function()
+end)
+-- characterdata @tabela
+-- character_id @numer
+RegisterNetEvent('ZSX_Multicharacter:Listener:SwappedCharacter')
+AddEventHandler('ZSX_Multicharacter:Listener:SwappedCharacter', function(characterdata, character_id)
+end)
+-- character_id @numer
+RegisterNetEvent('ZSX_Multicharacter:Listener:SelectedCharacter')
+AddEventHandler('ZSX_Multicharacter:Listener:SelectedCharacter', function(characterid)
+end)
+-- characterdata @tabela
+RegisterNetEvent('ZSX_Multicharacter:Listener:CharacterCreated')
+AddEventHandler('ZSX_Multicharacter:Listener:CharacterCreated', function(characterdata)
+end)
+-- brak
+RegisterNetEvent('ZSX_Multicharacter:Listener:LocationsDisabled')
+AddEventHandler('ZSX_Multicharacter:Listener:LocationsDisabled', function()
+end)
+-- współrzędne @vector3
+RegisterNetEvent('Multicharacter:Listener:ChangedLocation')
+AddEventHandler('Multicharacter:Listener:ChangedLocation', function()
+end)
+"title="Zdarzenia" lang="lua">
+
+</Code>
+
+Istnieją również specjalizowane funkcje w zasobie zwane "workerami". Workerzy to funkcje oparte na zdarzeniach, które mają na celu poprawę doświadczeń deweloperskich przy pracy z systemem Multicharacter. Zapewniają one dodatkowe możliwości rozszerzania i dostosowywania zasobu. Możesz poczytać o nich w sekcji plików w pliku `client/cl_worker.lua`.

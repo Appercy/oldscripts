@@ -1,0 +1,224 @@
+{
+    "common" : {
+        "processing": "Verarbeitung...",
+        "optional": "Optional"
+    },
+    "settings": {
+        "title": "Einstellungen",
+        "language": "Sprache",
+        "subtitle": "Wähle deine Sprache aus!",
+        "color": "Farb auswahl",
+        "settingsApplied": "Einstellungen",
+        "languageChanged": "Deine Sprache wurde erfolgreich geändert",
+        "disabled": "Bald verfügbar"
+    },
+    "sidebar": {
+        "settings": "Einstellungen",
+        "home": "Startseite",
+        "banking": "Dashboard",
+        "billing": "Rechnungen",
+        "atm": "EC-Karten",
+        "exit": "Beenden"
+    },
+    "home": {
+        "balance": "Kontostand",
+        "balancehistory": "Transaktionen",
+        "recent": "Letzte Transaktionen"
+    },
+    "banking": {
+        "loading": "Laden...",
+        "mainAccount": "Hauptkonto",
+        "savingsAccount": "Sparkonto",
+        "roles": {
+      "owner": "Owner",
+      "administrator": "Administrator",
+      "user": "User"
+        },
+        "title": "Banking Übersicht",
+        "unnamedAccount": "Unbenanntes Konto",
+        "maskedIban": "•••• •••• •••• ••••",
+        "roles": {
+            "owner": "Besitzer",
+            "co-owner": "Mitbesitzer",
+            "user": "Benutzer"
+        },
+        "actions": {
+            "deposit": "Einzahlen",
+            "withdraw": "Abheben",
+            "transfer": "Überweisen",
+            "addAccount": "Konto hinzufügen",
+            "details": "Details",
+            "share": "Teilen",
+            "delete": "Löschen",
+            "leave": "Verlassen",
+            "cancel": "Abbrechen",
+            "close": "Schließen"
+        },
+        "modals": {
+            "transaction": {
+                "title": "Neue Transaktion",
+                "account": "Konto",
+                "selectAccount": "Konto auswählen",
+                "amount": "Betrag",
+                "enterReason": "Grund Eingeben"
+            },
+            "transfer": {
+                "title": "Geld überweisen",
+                "fromAccount": "Von Konto",
+                "selectSource": "Quelle auswählen",
+                "transferType": "Überweisungstyp",
+                "toAccount": "An Konto",
+                "selectDestination": "Ziel auswählen",
+                "externalIban": "Externe IBAN",
+                "enterExternalIban": "Externe IBAN eingeben",
+                "amount": "Betrag",
+                "reason": "Grund",
+                "internal": "Intern",
+                "external": "Extern",
+                "enterReason": "Grund eingeben",
+                "confirmTransfer": "Überweisung bestätigen"
+            },
+            "share": {
+                "title": "Konto teilen",
+                "playerIdentifier": "Spieler-ID",
+                "enterPlayerIdentifier": "Spieler-ID eingeben",
+                "role": "Rolle",
+                "share": "Teilen"
+            },
+            "createAccount": {
+                "title": "Konto erstellen",
+                "nickname": "Kontoname",
+                "enterNickname": "Kontonamen eingeben",
+                "createAccount": "Konto erstellen"
+            },
+            "editRole": {
+                "title": "Rolle bearbeiten",
+                "role": "Rolle",
+                "updateRole": "Rolle aktualisieren"
+            },
+            "deleteAccount": {
+                "title": "Konto löschen",
+                "confirmMessage": "Möchten Sie dieses Konto wirklich löschen?",
+                "deleteAccount": "Konto löschen"
+            },
+            "leaveAccount": {
+                "title": "Konto verlassen",
+                "confirmMessage": "Möchten Sie dieses Konto wirklich verlassen?",
+                "leaveAccount": "Konto verlassen"
+            },
+            "accountDetails": {
+                "title": "Kontodetails",
+                "renamePlaceholder": "Konto umbenennen",
+                "transactionHistory": "Transaktionsverlauf",
+                "date": "Datum",
+                "description": "Beschreibung",
+                "amount": "Betrag",
+                "status": "Status",
+                "interestRate": "Zinssatz",
+                "accessList": "Zugriffsliste",
+                "issuer": "Aussteller"
+            }
+        }
+    },
+    "billing": {
+        "tabs": {
+            "received": "Erhaltene Rechnungen",
+            "issued": "Ausgestellte Rechnungen"
+        },
+        "received": {
+            "title": "Eingehende Rechnungen",
+            "subtitle": "Deine Rechnungen die du noch bezahlen musst :(",
+            "createBill": "Rechnung erstellen",
+            "description": "Beschreibung",
+            "amount": "Betrag",
+            "dueDate": "Fälligkeitsdatum",
+            "timeLeft": "Verbleibende Zeit",
+            "daysLeft": "{days} Tage verbleibend",
+            "overdue": "{days} Tage überfällig",
+            "paid": "Bezahlt",
+            "actions": "Aktionen"
+        },
+        "issued": {
+            "title": "Ausgestellte Rechnungen",
+            "subtitle": "Deine Rechnungen die Andere dir Schulden :)",
+            "description": "Beschreibung",
+            "amount": "Betrag",
+            "dueDate": "Fälligkeitsdatum",
+            "status": "Status",
+            "paid": "Bezahlt",
+            "pending": "Ausstehend",
+            "iban": "IBAN"
+        },
+        "modals": {
+            "createBill": {
+                "title": "Neue Rechnung erstellen",
+                "amount": "Betrag",
+                "dueDate": "Fälligkeitsdatum",
+                "description": "Beschreibung",
+                "descriptionPlaceholder": "z.B. Stromrechnung",
+                "recipient": "Empfänger",
+                "recipientPlaceholder": "z.B. Stromversorger",
+                "iban": "IBAN",
+                "ibanPlaceholder": "LS00BANK...",
+                "societyBill": "Ist dies eine Gesellschaftsrechnung?"
+            },
+            "payBill": {
+                "title": "Rechnung bezahlen",
+                "bill": "Rechnung",
+                "amount": "Betrag",
+                "selectAccount": "Konto auswählen",
+                "selectAccountPlaceholder": "Konto auswählen"
+            }
+        },
+        "actions": {
+            "cancel": "Abbrechen",
+            "create": "Erstellen",
+            "confirmPayment": "Zahlung bestätigen"
+        }
+    },
+    "cardManagement": {
+        "card": "Karte",
+        "account": "Konto",
+        "expired": "Abgelaufen",
+        "timeUnits" : {
+            "mo": "Monat/e",
+            "d": "Tag",
+            "lessThanDay": "weniger als ein Tag"
+        },
+        "title": "Kartenverwaltung",
+        "newCard": "Neue Karte",
+        "validThru": "Gültig bis",
+        "limit": "Limit",
+        "emptyState": "Keine Karten gefunden. Erstellen Sie Ihre erste Karte, um zu beginnen.",
+        "modals": {
+            "createCard": {
+                "title": "Neue Karte erstellen",
+                "account": "Konto",
+                "nickname": "Spitzname",
+                "nicknamePlaceholder": "Persönliche Karte",
+                "pin": "PIN",
+                "pinHint": "Pin muss 4 Ziffern sein",
+                "pinplaceholder": "1234 (4 Ziffern)"
+            },
+            "withdrawalLimit": {
+                "title": "Auszugslimits",
+                "maxWithdrawal": "Maximaler Auszug pro Stunde (€)"
+            },
+            "deleteCard": {
+                "title": "Karte löschen",
+                "confirmMessage": "Möchten Sie diese Karte wirklich dauerhaft löschen?"
+            }
+        },
+        "actions": {
+            "lock": "Sperren/Entsperren",
+            "limit": "Abhebe Limit",
+            "delete": "Löschen",
+            "duplicate": "Duplizieren",
+            "cancel": "Abbrechen",
+            "create": "Erstellen",
+            "saveChanges": "Änderungen speichern",
+            "deletePermanently": "Dauerhaft löschen"
+        }
+    },
+    "loading": "Laden..."
+}

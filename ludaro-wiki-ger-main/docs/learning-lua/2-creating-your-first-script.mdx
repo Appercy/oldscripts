@@ -1,0 +1,116 @@
+---
+sidebar_position: 2
+title: 2. Dein erstes Script erstellen
+sidebar_label: 2. Dein erstes Script erstellen
+---
+
+# Dein erstes Script erstellen
+
+Hey, ich bin Ludaro und ich werde dir Schritt für Schritt zeigen, wie du dein erstes FiveM-Script erstellst!
+
+## Was wird benötigt, um dein erstes FiveM-Script zu erstellen?
+
+- [ ] Einen Testserver, entweder auf deinem eigenen PC (siehe "Einen FiveM Server auf deinem eigenen PC hosten") oder auf einem dedizierten Server.
+- [ ] Einen guten Text-Editor (Visual Studio Code wird empfohlen, aber du kannst jeden verwenden, den du bevorzugst).
+- [ ] Ein Programm oder eine Website zum Zugriff auf deine Datenbank (z. B. phpMyAdmin oder HeidiSQL).
+
+## Anfänger-Guide: Dein erstes FiveM-Script erstellen
+
+> [info] Wichtige Vorkenntnisse: Du solltest im Voraus den Artikel [Lua lernen - Die Basics](1-basics.mdx) gelesen haben.
+
+Wenn du dein erstes FiveM-Script erstellen möchtest, solltest du zunächst darüber nachdenken, welches Projekt du umsetzen möchtest. In der Kategorie "Anfängerprojekte zum Nachmachen" findest du Ideen und Anleitungen, die dir bei der Umsetzung helfen können. Es ist ratsam, keine zu großen Projekte zu wählen, da Fehler gemacht werden dürfen und daraus gelernt werden kann. Du kannst dies entweder auf einem Testserver auf deinem eigenen PC (siehe "Einen FiveM Server auf deinem eigenen PC hosten") oder auf einem anderen Server durchführen.
+
+## Dokumentation
+
+Bevor du mit der Erstellung deines Scripts beginnst, ist es hilfreich, deine Idee klar zu definieren, entweder in deinem Kopf oder mit Notizen. Überlege dir:
+
+- Was soll mein Script tun?
+- Welche Code-Ressourcen benötige ich dafür?
+
+Lass uns das anhand eines Beispiels für ein Teamchat-Skript erklären.
+
+### Ein Teamchat-Skript benötigt:
+
+- Einen vorhandenen Chat.
+- Ein Gruppensystem (z. B. ESX oder QB).
+
+### Was soll mein Skript tun?
+
+Wenn ich "/teamchat NACHRICHT" eingebe, soll diese Nachricht an alle Admins weitergeleitet werden. Dazu muss ich überprüfen, ob die Person zur Admin-Gruppe gehört, und die Nachricht dann an alle Admins senden.
+
+Es ist nicht notwendig, alles detailliert zu dokumentieren, aber eine grobe Vorstellung hilft, die Struktur des Scripts zu behalten und zu wissen, wo du anfangen kannst.
+
+## Erstellung des Skripts
+
+Um das Skript zu erstellen, gehe in den "resources"-Ordner deines FiveM-Servers und erstelle einen Ordner. Der Name sollte keine Leerzeichen oder Sonderzeichen enthalten und leicht zu merken sein.
+
+### Erstellen der `fxmanifest.lua`
+
+In diesem Ordner erstellst du eine Datei namens `fxmanifest.lua`.
+
+> [!info] Visual Studio Code ermöglicht es dir, ganze Ordner in Visual Studio Code zu öffnen, um eine bessere Strukturierung zu ermöglichen. Ich empfehle dir dies ebenfalls (links oben auf "File" -> "Open Folder" und wähle den Ordner deiner Ressourcen). Beachte, dass dies nur funktioniert, wenn die Dateien auf demselben PC gespeichert sind, auf dem auch Visual Studio Code läuft. Wenn du über WinSCP oder Remote Desktop auf einen Server zugreifst, musst du die Dateien lokal auf deinem PC bearbeiten und dann hochladen.
+
+Diese Datei gibt an, woraus dein Script besteht:
+
+```lua
+fx_version 'cerulean'
+
+game 'gta5'
+
+name "Teamchat" -- Der Name unseres Scripts
+
+author 'Ludaro' -- Unser Name
+
+description 'Ein Teamchat für coole Leute!' -- Eine kurze Beschreibung
+```
+
+### Erstellen der `client.lua`, `server.lua` und `config.lua`
+
+Nun müssen wir überlegen, welche Lua-Dateien wir benötigen:
+
+- **Client Skripts:** Client Skripts sind Lua-Dateien, die auf dem Computer des Spielers ausgeführt werden. Sie sind verantwortlich für alles, was **im Spiel passiert**. Dazu gehören Dinge wie das Erzeugen von Objekten, das Abspielen von Animationen und die Interaktion mit der Benutzeroberfläche.
+
+  Wir brauchen eine `client.lua`-Datei, damit wir **im Spiel** das Kommando registrieren können.
+
+- **Server Skripts:** Server Skripts sind Lua-Dateien, die auf dem Server ausgeführt werden. Sie sind für die Verwaltung der Spiellogik und Daten verantwortlich. Dazu gehören alles, was mit der Datenbank oder Spielerdaten zu tun hat.
+
+  Wir brauchen eine `server.lua`-Datei, um die Gruppe **als Daten** zu holen.
+
+- **Shared Skripts:** Shared Skripts sind Lua-Dateien, die sowohl vom Client als auch vom Server gelesen werden können. Diese Dateien enthalten oft Konfigurationsdaten oder Funktionen, die sowohl der Client als auch der Server benötigen.
+
+  Wir brauchen eine `config.lua`-Datei, die "shared" ist, damit wir eine Konfigurationsdatei haben, die von beiden gelesen werden kann. Dies macht es einfacher für Endbenutzer, die Konfiguration zu bearbeiten.
+
+Dies konfigurieren wir in unserem `fxmanifest.lua`-Dokument unter dem, was wir bereits geschrieben haben:
+
+```lua
+client_scripts {
+    'client.lua'
+}
+
+server_scripts {
+    'server.lua'
+}
+
+shared_scripts {
+    'config.lua'
+}
+```
+
+### Dateien erstellen und editieren
+
+1. **Erstelle die Datei `client.lua`**:
+   - Diese Datei wird später den Code enthalten, um das Teamchat-Kommando im Spiel zu registrieren.
+
+2. **Erstelle die Datei `server.lua`**:
+   - Diese Datei wird später den Code enthalten, um die Gruppe der Spieler als Daten abzurufen.
+
+3. **Erstelle die Datei `config.lua`**:
+   - Diese Datei wird Konfigurationsdaten enthalten, die sowohl vom Client als auch vom Server verwendet werden können.
+
+Nun ist unsere Struktur fertig, und wir können mit der `client.lua`-Datei beginnen!
+
+## Nächste Schritte
+
+Jetzt hast du einen groben Überblick darüber, wie du dein erstes Script erstellst und welche Dateien du dafür benötigst. Im nächsten Schritt werden wir tiefer in die Funktionen und spezifischen Lua-Befehle eintauchen, die du verwenden wirst, um dein Script zum Leben zu erwecken.
+
+Wenn du bereit bist, weiterzumachen, geht's hier zu [3-trying-out.mdx].

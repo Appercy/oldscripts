@@ -1,0 +1,224 @@
+---
+title: FAQ (Frequently Asked Questions)
+sidebar: {
+    order: 4
+}
+---
+
+import { Code } from '@astrojs/starlight/components';
+
+
+## How Can I Translate ZSX_Multicharacter?
+
+If you would like to translate the ZSX_Multicharacter resource into another language, you can follow these steps:
+
+Firstly you can visit /shared/translations.lua which translates code inside lua that is parsed to NUI:
+<Code wrap code= "Translations.InfoText = {
+    ['preparing_z_coords'] = 'Preparing safe coords',
+    ['preparing_heading'] = 'Preparing heading',
+    ['preparing_new_coords'] = 'Preparing new coords',
+    ['clothing_timer_text'] = 'Find a convenient place to dress your character.'
+}" lang="lua" title="/shared/translations.lua"> </Code>
+
+Then you can go to /client/html/js/variables.js and client/html/index.html and edit both files this is very difficult and not recommended for beginners.
+
+##  How to add a function to automatically hide, show my HUD?
+
+Inside /client/cl_worker.lua you can find the function HandleHud
+<Code wrap code="	
+HandleHud = function(hideHud)
+    -- CODE TO HIDE/ENABLE YOUR HUD
+end
+" lang="lua" title="/client/cl_worker.lua" mark="-- CODE TO HIDE/ENABLE YOUR HUD"> </Code >
+inside of that you can add your code to hide or show your HUD. hideHud is a boolean that is passed to the function to hide or show the HUD.
+
+--- 
+## How to Change Default Settings for New Users?  
+
+In `/shared/config.lua`, locate the `Config.DefaultSettings` object. Modify the settings as needed:  
+
+```lua
+Config.DefaultSettings['Filters'] = 'NG_filmic25'  
+Config.DefaultSettings['Cameras'] = 'from_back'  
+```  
+
+Replace the strings with the desired names found in `/shared/config_usersettings.lua`.  
+
+---
+## How to Add More Cameras or Filters?  
+
+To add new cameras or filters, update `/shared/config_usersettings.lua`:  
+
+### Adding Filters  
+
+```lua
+{
+    name = 'my_new_filter',
+    label = "My New Filter",
+    value = .65,
+},
+```  
+--- 
+### Adding Cameras  
+
+```lua
+{
+    name = 'my_new_camera',
+    label = 'My New Camera',
+    rotations = {
+        x = false, -- ROTATE X AXIS
+        y = false, -- ROTATE Y AXIS
+        z = false, -- ROTATE Z AXIS
+    },
+    offsets = {
+        x = -3.25, -- LEFT/RIGHT
+        y = 5.5, -- FORWARD/BACKWARD
+        z = 0.3, -- TOP/BOTTOM
+    },
+},
+```  
+
+---
+## How to Add More Default Locations?  
+
+Update `/shared/config_locations.lua` with a unique key for each location:  
+
+```lua
+['mission_row'] = {
+    coords = vector3(409.1667, -1013.328, 29.39579), -- Coords of the location
+    type = "default", -- DO NOT CHANGE THE TYPE
+    label = 'Mission Row', -- Label of the given location
+}
+```  
+
+---
+## How to Change Starting Items?  
+
+### For ESX  
+
+Modify `/shared/config.lua` under `Config.StarterItems`:  
+
+```lua
+Config.StarterItems = {
+    {
+        item = 'bread',
+        amount = 3
+    },
+    {
+        item = 'water',
+        amount = 3
+    },
+    { -- New item layout
+        item = 'phone',
+        amount = 1,
+    },
+}
+```  
+
+### For QBCore  
+
+Edit the QBCore-specific configuration.  
+
+---
+## How to Change Default Spawn Coordinates?  
+
+Modify `/shared/config.lua` under `Config.SpawnCoords`:  
+
+```lua
+Config.SpawnCoords = {
+    coords = vector3(-1037.449, -2737.475, 20.16927), -- Spawn coords
+    heading = 329.1169 -- Spawn heading
+}
+```  
+
+---
+## How to Prevent Players from Swapping Locations on Logout?  
+
+In `/shared/config.lua`, set the following:  
+
+```lua
+Config.CanSwapLocationOnLogout = false
+```  
+
+---
+## How to Change the Server Logo?  
+
+Update `/shared/config.lua` with the following line:  
+
+```lua
+Config.ServerLogo = 'https://r2.fivemanage.com/pub/ctxilgf52se2.png'
+```  
+
+**Note:** Use trusted CDNs like [fivemanage.com](https://fivemanage.com). Discord and Imgur links are not supported due to cross-origin policies.  
+
+---
+## How to Change Default Music?  
+
+In `/shared/config.lua`, adjust the following:  
+
+```lua
+Config.Music = {
+    default = 'https://www.youtube.com/watch?v=OP3g69Vb_-k', -- YouTube Music URL
+    volume = .3, -- Default volume
+}
+```  
+
+---
+## How to Adjust the Default Number of Characters?  
+
+In `/shared/config.lua`, update the value:  
+
+```lua
+Config.Characters.Free = 1 -- Set this number to a higher value
+```  
+
+---
+## How to Set User Character Slots?  
+
+Update the `zsx_multicharacter_slots` table in your SQL database. Use the user's license or selector defined in your config and adjust the `amount` column.  
+
+---
+## How to Enable/Disable Debug Mode?  
+
+In `/shared/config.lua`, toggle the following:  
+
+```lua
+Config.Debug = true -- Set to TRUE to enable, FALSE to disable
+Config.IssueHelper = true -- Set to TRUE to enable, FALSE to disable
+```  
+
+---
+## How to Adjust the Clothing Timer?  
+
+Modify `/shared/config.lua` with the desired value in milliseconds:  
+
+```lua
+Config.ClothingTimer = 15000 -- Time in milliseconds
+```  
+
+---
+## How to Change Skin Functions?  
+
+If you're using an appearance resource such as `esx_skin`, `qb-clothing`, `illenium-appearance`, or similar, update `/shared/config.lua`:  
+
+```lua
+Config.ForceAppearance = 'your-appearance-resource'
+```  
+
+If not, modify the functions in `client/framework/framework_functions.lua`:  
+
+- `Framework.OpenSkinMenu`  
+- `Framework.SetSkin`  
+
+Add your custom export or event handlers here.  
+
+---
+## What If YouTube is Restricted?  
+
+If YouTube is not accessible (e.g., in China), add the following snippet to `client/html/js/loader.js` on the 3rd line:  
+
+```javascript
+$.post(`https://${GetParentResourceName()}/music_ready`, JSON.stringify({}))
+```  
+
+Music will not work unless you use a VPN, but this ensures the server remains accessible.  

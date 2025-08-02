@@ -1,0 +1,109 @@
+---
+title: SCRIPTNAME Used the getSharedObject Event, this event no longer exists!
+---
+
+import { Tabs, TabItem, CardGrid, LinkCard, Code, Aside, FileTree } from '@astrojs/starlight/components';
+
+
+
+## Was bedeutet das?
+
+Das Event `getSharedObject` wurde in der neusten Version von ESX entfernt. Das bedeutet, dass du den Code, der dieses Event verwendet, anpassen musst, um ihn mit der neusten Version von ESX kompatibel zu machen.
+
+## Was kann ich tun?
+
+Es gibt 2 Methoden um dieses Problem zu lösen:
+
+<Aside> Den Code in ESX anzupassen ist nicht empfohlen da es zu Performance Problemen führen kann ist jedoch sehr viel einfacher </Aside>
+
+<Tabs>
+
+<TabItem label="Ersetze den Code in jedem alten Skript">
+Um den Code mit der neusten Version von ESX kompatibel zu machen, musst du den Code, der das `getSharedObject`-Event verwendet, durch den entsprechenden Code ersetzen, der in der neusten Version von ESX verwendet wird.
+
+Hier ist ein Beispiel, wie du den Code anpassen kannst:
+
+```lua
+-- Alter Code
+local ESX = nil
+
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+
+-- Neuer Code
+
+ESX = exports.es_extended:getSharedObject()
+```
+
+In diesem Beispiel wird der alte Code, der das `getSharedObject`-Event verwendet, durch den neuen Code ersetzt, der in der neusten Version von ESX verwendet wird.
+
+
+</TabItem>
+
+<TabItem label="Ersetze den Code einmalig in ESX">
+
+<Tabs>
+<TabItem label="ESX Version 1.11 und darüber">
+
+du kannst den Code einmalig in ESX ersetzen, um das `getSharedObject`-Event wieder einzufügen damit du nicht jedes Skript anpassen musst.
+
+Dies machst du in der folgenden Datei:
+
+<FileTree>
+- es_extended
+  - shared
+    - **main.lua** hier drinnen
+</FileTree>
+
+da findest du folgenden code: 
+
+<Code  lang="lua" code={`AddEventHandler("esx:getSharedObject", function()
+	local Invoke = GetInvokingResource()
+	print(("[^1ERROR^7] Resource ^5%s^7 Used the ^5getSharedObject^7 Event, this event ^1no longer exists!^7 Visit https://documentation.esx-framework.org/tutorials/tutorials-esx/sharedevent for how to fix!"):format(Invoke))
+end)`}> </Code>
+
+diesen ersetzt du mit
+
+<Code lang="lua" code={`AddEventHandler("esx:getSharedObject", function(cb)
+	cb(ESX)
+end)`}> </Code>
+
+
+das wars! du hast das Problem gelöst!
+
+
+</TabItem><TabItem label = "ESX Version 1.10 und darunter">
+
+
+ du kannst den Code einmalig in ESX ersetzen, um das `getSharedObject`-Event wieder einzufügen damit du nicht jedes Skript anpassen musst.
+
+Dies machst du in der folgenden Dateien:
+
+<FileTree>
+- es_extended
+  - server
+    - **main.lua** hier drinnen
+  - client
+    - **main.lua** hier drinnen
+</FileTree>
+
+da findest du in beiden dateien folgenden code: 
+
+<Code lang="lua" code={`AddEventHandler("esx:getSharedObject", function()
+	local Invoke = GetInvokingResource()
+	print(("[^1ERROR^7] Resource ^5%s^7 Used the ^5getSharedObject^7 Event, this event ^1no longer exists!^7 Visit https://documentation.esx-framework.org/tutorials/tutorials-esx/sharedevent for how to fix!"):format(Invoke))
+end)`}> </Code>
+
+diesen ersetzt du mit
+
+<Code lang="lua" code={`AddEventHandler("esx:getSharedObject", function(cb)
+	cb(ESX)
+end)`}> </Code>
+
+das wars! du hast das Problem gelöst!
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
+

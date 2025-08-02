@@ -1,0 +1,156 @@
+---
+sidebar_position: 3
+title: 3. Teamchat erstellen und ausprobieren
+sidebar_label: 3. Teamchat erstellen und ausprobieren
+---
+
+# Teamchat erstellen und ausprobieren
+
+Hey, ich bin Ludaro, und in diesem Kapitel zeige ich dir, wie du einen funktionsfähigen Teamchat in FiveM erstellst. Wir werden Schritt für Schritt durch den Prozess gehen und dabei Testetappen einbauen, um zu verstehen, was passiert.
+
+## Ablauf des Teamchat-Scripts
+
+Bevor wir beginnen, lass uns den Ablauf des Teamchat-Scripts klären:
+
+1. **Spieler gibt `/teamchat TEXT` ein.**
+2. **TEXT wird an den Server gesendet.**
+3. **Der Server prüft, ob der Spieler Admin ist.**
+4. **Jedem Spieler, der Admin ist, wird TEXT mit dem Spielernamen davor gesendet.**
+
+## Client-Skript (client.lua)
+
+### RegisterCommand
+
+Beginnen wir mit dem Registrieren eines Befehls.
+
+```lua
+-- Registriere einen neuen Befehl namens "teamchat"
+RegisterCommand("teamchat", function(source, args, rawCommand)
+    -- Kombiniere alle Argumente zu einer einzigen Nachricht
+    local msg = table.concat(args, " ")
+    -- Zeige die Nachricht im Chat an (Test 1)
+    TriggerEvent('chat:addMessage', {
+        color = {255, 0, 0},
+        multiline = true,
+        args = {"Team", msg}
+    })
+end, false)
+```
+
+#### Test 1: Funktioniert der Befehl?
+
+1. **Speichere die `client.lua` Datei.**
+2. **Starte das Script neu:**
+    - Öffne die Konsole deines FiveM-Servers und gib `restart [Script-Name]` ein.
+    - Alternativ kannst du den Server neu starten, aber das ist normalerweise nicht nötig, da das Neuladen des Scripts schneller und effizienter ist.
+3. **Verbinde dich mit dem Server (falls du ihn neugestartet hast).**
+4. **Öffne das Chatfenster im Spiel und tippe `/teamchat Testnachricht`.**
+
+Du solltest "Testnachricht" im Chat sehen. Wenn das funktioniert, geht es weiter zum nächsten Schritt.
+
+### TriggerServerEvent
+
+Jetzt werden wir die Nachricht an den Server senden.
+
+```lua
+-- Registriere einen neuen Befehl namens "teamchat"
+RegisterCommand("teamchat", function(source, args, rawCommand)
+    -- Kombiniere alle Argumente zu einer einzigen Nachricht
+    local msg = table.concat(args, " ")
+    -- Sende ein Event an den Server, um die Nachricht zu verarbeiten (Test 2)
+    TriggerServerEvent("sendTeamMessage", msg)
+end, false)
+```
+
+### Client-Skript vervollständigen
+
+Füge den Code hinzu, der die Nachricht im Chat anzeigt.
+
+```lua
+-- Event um die Nachricht im Chat anzuzeigen
+RegisterNetEvent("displayTeamMessage")
+AddEventHandler("displayTeamMessage", function(msg)
+    -- Füge eine Nachricht zum Chat hinzu
+    TriggerEvent('chat:addMessage', {
+        color = {255, 0, 0},
+        multiline = true,
+        args = {"Team", msg}
+    })
+end)
+```
+
+Mit diesen Änderungen ist die `client.lua` Datei fertig.
+
+## Server-Skript (server.lua)
+
+### Event registrieren und verarbeiten
+
+Öffne die `server.lua` Datei und füge folgenden Code hinzu:
+
+```lua
+-- Hol dir das ESX Objekt
+ESX = exports["es_extended"]:getSharedObject()
+
+-- Event um die Teamnachricht zu verarbeiten
+RegisterNetEvent("sendTeamMessage")
+AddEventHandler("sendTeamMessage", function(msg)
+    -- Nur für Testzwecke (Test 2)
+    print("Nachricht vom Client erhalten: " .. msg)
+end)
+```
+
+#### Test 2: Wird die Nachricht an den Server gesendet?
+
+1. **Speichere die `server.lua` Datei.**
+2. **Starte das Script neu:**
+    - Öffne die Konsole deines FiveM-Servers und gib `restart [Script-Name]` ein.
+3. **Verbinde dich erneut mit dem Server (falls du ihn neugestartet hast).**
+4. **Öffne das Chatfenster im Spiel und tippe `/teamchat Testnachricht`.**
+5. **Überprüfe die Server-Konsole auf die Ausgabe "Nachricht vom Client erhalten: Testnachricht".**
+
+Wenn das funktioniert, gehen wir weiter zum nächsten Schritt.
+
+### Admin-Check und Nachricht an Admins senden
+
+Nun fügen wir den Admin-Check hinzu und senden die Nachricht an alle Admins.
+
+Ersetze den bisherigen Code in der `server.lua` Datei durch:
+
+```lua
+-- Hol dir das ESX Objekt
+ESX = exports["es_extended"]:getSharedObject()
+
+-- Event um die Teamnachricht zu verarbeiten
+RegisterNetEvent("sendTeamMessage")
+AddEventHandler("sendTeamMessage", function(msg)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    -- Überprüfe, ob der Spieler zur Admin-Gruppe gehört
+    if xPlayer and xPlayer.getGroup() == 'admin' then
+        -- Sende die Nachricht an alle Admin-Spieler
+        for _, playerId in ipairs(GetPlayers()) do
+            local targetPlayer = ESX.GetPlayerFromId(playerId)
+            if targetPlayer and targetPlayer.getGroup() == 'admin' then
+                local name = GetPlayerName(source)
+                TriggerClientEvent("displayTeamMessage", targetPlayer.source, name .. ": " .. msg)
+            end
+        end
+    else
+        -- Sende eine Fehlermeldung an den Spieler, wenn er kein Admin ist
+        TriggerClientEvent("chat:addMessage", source, { args = {"System", "Du bist nicht im Team!"} })
+    end
+end)
+```
+
+## Finaler Test
+
+1. **Speichere die `client.lua` und `server.lua` Dateien.**
+2. **Starte das Script neu:**
+    - Öffne die Konsole deines FiveM-Servers und gib `restart [Script-Name]` ein.
+3. **Verbinde dich erneut mit dem Server (falls du ihn neugestartet hast).**
+4. **Öffne das Chatfenster im Spiel und tippe `/teamchat Hallo Team!`.**
+
+Nur Admins sollten die Nachricht im Chat sehen, und die Nachricht sollte mit dem Namen des Spielers angezeigt werden.
+
+## Fazit
+
+Du hast jetzt ein funktionierendes Teamchat-Script erstellt. Du hast gelernt, wie man Kommandos registriert, Events zwischen Client und Server sendet und Nachrichten nur an bestimmte Spielergruppen sendet. Nutze diese Kenntnisse, um dein Projekt weiterzuentwickeln und anzupassen. Viel Spaß beim Coden!

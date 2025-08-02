@@ -1,0 +1,122 @@
+---
+title: Integration
+sidebar: {
+    order: 4
+}
+---
+
+import { Code, Steps, Tabs, TabItem} from '@astrojs/starlight/components'
+
+# Integration
+
+## What is Integration?
+
+Integration refers to the process of connecting the UI with other resources in your project. This can be achieved through the provided exports or events.
+
+<Tabs>
+<TabItem label="Notification">
+### Event / Export
+You can integrate notifications into your resource by using the exports or events offered by the UI. you do this by using this export
+    
+    ```lua
+    local icon = 'fas fa-bell' -- fontawesome icons
+    local caption = 'Notification' -- caption to display
+    local text = 'This is a notification' -- text to display
+    local length = 5000 -- time in milliseconds
+    export['ZSX_UI']:AddNotify(icon, caption, text, length)
+    ```
+same can be done with an event
+    
+        ```lua
+        local icon = 'fas fa-bell' -- fontawesome icons
+        local caption = 'Notification' -- caption to display
+        local text = 'This is a notification' -- text to display
+        local length = 5000 -- time in milliseconds
+        TriggerEvent('ZSX_UI:addNotify', icon, caption, text, length)
+        ```
+
+        ### Framework Integration
+Alternatively, for greater convenience, you can replace these exports with the notification system used by your framework.
+
+<Tabs>
+<TabItem label="ESX"> 
+You do this by searching ESX.ShowNotification inside your es_extended/client/functions.lua file and replace it with the following code:
+<Code wrap lang="lua" code='function ESX.ShowNotification(message, notifyType, length)
+    if exports.ZSX_UI then
+    exports["tc_customui"]:AddNotify("fas fa-inbox", "Notification!", message, length)
+    else
+    if GetResourceState("esx_notify") ~= "missing" then
+        return exports["esx_notify"]:Notify(notifyType, length, message)
+    end
+    end
+    ' nark='exports["ZSX_UI"]:AddNotify("fas fa-inbox", "Notification!", message, length)'> </Code>
+</TabItem>
+<TabItem label="QBCore">
+
+<Code wrap lang="lua"code= 'function QBCore.Functions.Notify(text, textype, length)
+    if type(text) == "table" then
+        local ttext = text.text or "Placeholder"
+        local caption = text.caption or "Placeholde"
+        local icon = text.icon or "fas fa-inbox"
+        local length = length or 3000
+        exports["ZSX_UI"]:AddNotify(icon, caption, ttext, length)
+    else
+        local ttext = text or "Placeholder"
+        local length = length or 5000
+        exports["ZSX_UI"]:AddNotify("fas fa-inbox", "Notification", ttext, length)
+    end
+end' mark='exports["tc_customui"]:AddNotify("fas fa-inbox", "Notification!", message, length)'></Code> </TabItem>
+</Tabs>
+</TabItem>
+
+<TabItem label="Progress Bar">
+### Event / Export
+You can integrate progress bars into your resource by using the exports or events offered by the UI. you do this by using this export
+
+```lua
+exports['ZSX_UI']:ProgressBar('Custom progressbar...', 
+    3000, {
+        freezeEntity = true,
+        onComplete = function()
+            --some code
+        end,
+        disableControls = "all",
+    }
+)
+```
+or this event 
+    
+```lua
+    TriggerEvent('ZSX_UI:ProgressBar', 'Custom progressbar...', 
+
+    3000, {
+        freezeEntity = true,
+        onComplete = function()
+            --some code
+        end,
+        disableControls = "all",
+    }
+)
+``` 
+</TabItem>
+</Tabs>
+
+# Initialization
+
+## What is Initialization?
+
+Initialization is the process of setting up the UI for the first time. there is an first time setup that needs to be done before you can start using the UI as a player 
+
+by default the initialization (Config.AutoStartUI) is set to false, meaning that the UI will show up at the beginning of the game, 
+
+this can create a problem if you want the UI setup to be done later in the game, so you can set the Config.AutoStartUI to false and then use the export or the event to initialize the UI manually
+
+### export to initialize
+```lua
+export['ZSX_UI']:Initialize()
+```
+
+### Event to initialize
+```lua
+TriggerEvent('ZSX_UI:Initialize')
+```z

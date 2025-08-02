@@ -1,0 +1,111 @@
+---
+title: Instalacja
+description: Jak prawidłowo zainstalować zasób Multicharacter
+sidebar: {
+    order: 4
+}
+---
+
+# Jak prawidłowo zainstalować zasób Multicharacter
+
+Aby upewnić się, że zasób jest poprawnie zainstalowany i działa, wykonaj poniższe kroki:
+
+import { Code, Steps, Tabs, TabItem} from '@astrojs/starlight/components'
+
+<Tabs>
+  <TabItem label="ESX">
+    <Steps>
+      1. **Skonfiguruj ESX**  
+         Jeśli używasz ESX, upewnij się, że następujące ustawienie jest włączone w pliku `es_extended/config.lua` lub `es_extended/shared/main.lua`:  
+         <Code wrap code='
+         Config.Multichar = true (GetResourceState("esx_multicharacter") ~= "missing")
+         'lang="lua" label="es_extended/config.lua" del='GetResourceState("esx_multicharacter") ~= "missing"'> 
+         </Code>
+
+         Usuń czerwoną część i zastąp ją wartością true
+
+      2. **Pobierz zasób**  
+         Pobierz zasób Multicharacter ze strony [Keymaster](https://keymaster.fivem.net/).
+
+      3. **Dodaj zasób do swojego serwera**  
+         - Przeciągnij pobrany zasób do głównego katalogu `/resources`.
+
+      4. **Zaktualizuj swój plik konfiguracyjny**  
+         Otwórz swój plik `server.cfg` (lub użyj txAdmin > CFG Editor) i wykonaj następujące czynności:  
+         - Dodaj poniższe linie, aby zatrzymać wszelkie istniejące zasoby multicharacter, jeśli jeszcze ich nie usunąłeś:  
+           ```plaintext
+           stop esx_multicharacter  # Domyślny zasób multicharacter ESX
+           ```
+         - Dodaj poniższą linię, aby upewnić się, że nowy zasób Multicharacter zostanie uruchomiony:  
+           ```plaintext
+           ensure ZSX_Multicharacter
+           ```
+           ta linia powinna znajdować się po linii `ensure` Twojego frameworka.
+
+      5. **Ustaw liczbę postaci**  
+         Skonfiguruj maksymalną liczbę postaci w pliku `/shared/config.lua`:  
+         ```lua
+         Config.Characters.Free = 1  -- Zastąp "1" pożądaną liczbą darmowych postaci
+         ```
+
+      6. **Uruchom swój serwer**  
+         Uruchom serwer i ciesz się zasobem!
+    </Steps>
+  </TabItem>
+
+  <TabItem label="QBCore">
+    <Steps>
+      1. **Pobierz zasób**  
+         Pobierz zasób Multicharacter ze strony [Keymaster](https://keymaster.fivem.net/).
+
+      2. **Dodaj zasób do swojego serwera**  
+         - Przeciągnij pobrany zasób do głównego katalogu `/resources`. 
+
+      4. **Zaktualizuj swój plik konfiguracyjny**  
+         Otwórz swój plik `server.cfg` (lub użyj txAdmin > CFG Editor) i wykonaj następujące czynności:  
+         - Dodaj poniższe linie, aby zatrzymać wszelkie istniejące zasoby multicharacter, jeśli jeszcze ich nie usunąłeś:  
+           ```plaintext
+           stop qb_multicharacter  # Domyślny zasób multicharacter QBCore
+           ```
+         - Dodaj poniższą linię, aby upewnić się, że nowy zasób Multicharacter zostanie uruchomiony:  
+           ```plaintext
+           ensure ZSX_Multicharacter
+           ```
+         Ta linia powinna znajdować się bezpośrednio po linii `ensure` Twojego frameworka.
+
+      3. **Ustaw liczbę postaci**  
+         Skonfiguruj maksymalną liczbę postaci w pliku `/shared/config.lua`:  
+         ```lua
+         Config.Characters.Free = 1  -- Zastąp "1" pożądaną liczbą darmowych postaci
+         ```
+
+      4. **Uruchom swój serwer**  
+         Uruchom serwer i ciesz się zasobem!
+    </Steps>
+  </TabItem>
+
+  <TabItem label="QBox">
+      <Steps>
+      1. **Pobierz zasób**  
+         Pobierz zasób Multicharacter ze strony [Keymaster](https://keymaster.fivem.net/).
+
+      2. **Dodaj zasób do swojego serwera**  
+         - Przeciągnij pobrany zasób do głównego katalogu `/resources`. 
+
+         - Dodaj poniższą linię, aby upewnić się, że nowy zasób Multicharacter zostanie uruchomiony:  
+           ```plaintext
+           ensure ZSX_Multicharacter
+           ```
+         Ta linia powinna znajdować się bezpośrednio po linii `ensure` Twojego frameworka.
+
+      3. **Ustaw liczbę postaci**  
+         Skonfiguruj maksymalną liczbę postaci w pliku `/shared/config.lua`:  
+         ```lua
+         Config.Characters.Free = 1  -- Zastąp "1" pożądaną liczbą darmowych postaci
+         ```
+
+      4. **Uruchom swój serwer**  
+         Uruchom serwer i ciesz się zasobem!
+    </Steps>
+  </TabItem>
+</Tabs>

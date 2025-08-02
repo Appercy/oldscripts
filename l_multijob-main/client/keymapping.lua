@@ -1,0 +1,1 @@
+RegisterKeyMapping(Config.CommandName, "Multi Job Menü Öffnen", "keyboard", Config.Key)

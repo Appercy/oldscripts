@@ -1,0 +1,36 @@
+---
+title: Instalacja
+sidebar: {
+    order: 2
+}
+---
+## Jak poprawnie zainstalować zasób Dealership
+Aby upewnić się, że zasób został poprawnie zainstalowany i działa, wykonaj następujące kroki:
+
+import { Code, Steps, Tabs, TabItem} from '@astrojs/starlight/components'
+
+<Steps>
+
+1. **Pobierz zasób**  
+   Pobierz zasób Dealership ze strony [Keymaster](https://keymaster.fivem.net/).
+
+2. **Dodaj zasób do swojego serwera**
+    Przeciągnij pobrany zasób do głównego katalogu `/resources` na serwerze.
+
+3. **Zaktualizuj swój plik konfiguracyjny**
+    Otwórz plik `server.cfg` (lub użyj txAdmin > CFG Editor) i wykonaj następujące kroki:
+
+    Dodaj następującą linię, aby upewnić się, że zasób UI zostanie uruchomiony:
+    ```plaintext
+    ensure ZSX_Dealership
+    ```
+    Powinna zostać umieszczona po linii `ensure` twojego frameworka, najlepiej na dole pliku.
+
+4. **Konfiguracja**
+
+    Otwórz pliki `config` i skonfiguruj Dealership według własnych potrzeb.
+
+5. **Uruchom serwer**
+    Uruchom serwer i ciesz się zasobem!
+
+</Steps>

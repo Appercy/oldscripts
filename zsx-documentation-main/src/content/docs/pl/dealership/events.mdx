@@ -1,0 +1,125 @@
+---
+title: Wydarzenia
+sidebar: {
+    order: 4
+}
+---
+
+## Wydarzenia Dealership
+
+Zasób Dealership ma kilka wydarzeń, które można wykorzystać do interakcji z tym zasobem. Poniżej znajdują się wydarzenia oraz sposób ich użycia.
+
+Wydarzenia bazowe znajdują się w
+
+import { FileTree } from '@astrojs/starlight/components';
+
+
+<FileTree>
+
+- ZSX_Dealership
+  - client
+        - config
+            - **cl_baseevents.lua**
+
+</FileTree>
+
+## **ZSX_Dealership:Listeners:OnTestDriveInit**
+
+Wywoływane, gdy testowa jazda się rozpoczyna.
+
+#### Parametry
+- **Brak**
+
+
+#### Przykład
+```lua
+AddEventHandler('ZSX_Dealership:Listeners:OnTestDriveInit', function()
+    print('Testowa jazda rozpoczęta.')
+end)
+```
+
+---
+
+## **ZSX_Dealership:Listeners:OnTestDriveEnd**
+
+Wywoływane, gdy testowa jazda się kończy.
+
+#### Parametry
+- **Brak**
+
+
+#### Przykład
+```lua
+AddEventHandler('ZSX_Dealership:Listeners:OnTestDriveEnd', function()
+    print('Testowa jazda zakończona.')
+end)
+```
+
+---
+
+## **ZSX_Dealership:Listeners:OnDealershipInit**
+
+Wywoływane, gdy salon zostaje zainicjowany.
+
+#### Parametry
+- **Brak**
+
+
+#### Przykład
+```lua
+AddEventHandler('ZSX_Dealership:Listeners:OnDealershipInit', function()
+    print('Salon został zainicjowany.')
+end)
+```
+
+---
+
+## **ZSX_Dealership:Listeners:OnDealershipEnd**
+
+Wywoływane, gdy salon zostaje zamknięty lub wyłączony.
+
+#### Parametry
+- **Brak**
+
+
+#### Przykład
+```lua
+AddEventHandler('ZSX_Dealership:Listeners:OnDealershipEnd', function()
+    print('Salon został zamknięty.')
+end)
+```
+
+---
+
+## **ZSX_Dealership:Listeners:VehicleBought**
+
+Wywoływane, gdy pojazd zostaje zakupiony.
+
+#### Parametry
+- **vehicle_entity** *(liczba)*: ID encji zakupionego pojazdu.
+- **plate** *(string)*: Tablica rejestracyjna zakupionego pojazdu.
+
+
+#### Przykład
+```lua
+AddEventHandler('ZSX_Dealership:Listeners:VehicleBought', function(vehicle_entity, plate)
+    print('Pojazd kupiony z ID encji:', vehicle_entity, 'i tablicą rejestracyjną:', plate)
+end)
+```
+
+---
+
+## **ZSX_Dealership:Listeners:VehicleOnChange**
+
+Wywoływane, gdy pojazd w salonie zostaje zmieniony.
+
+#### Parametry
+- **vehicle_entity** *(liczba)*: ID encji aktualnie wybranego pojazdu.
+
+
+#### Przykład
+```lua
+AddEventHandler('ZSX_Dealership:Listeners:VehicleOnChange', function(vehicle_entity)
+    print('Aktualny pojazd w salonie zmieniony na ID encji:', vehicle_entity)
+end)
+```

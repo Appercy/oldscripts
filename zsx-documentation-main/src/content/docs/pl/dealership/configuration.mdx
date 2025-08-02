@@ -1,0 +1,127 @@
+---
+title: Konfiguracja
+sidebar: {
+    order: 3
+}
+---
+
+import { FileTree, Steps, Code } from '@astrojs/starlight/components';
+export const highlights = [' --removeCoinsFunc(vehData.price)', ' --Apply the code check if user have exclusive currency required for vehicle price. Example ']
+
+### Dodawanie sklepu
+
+Sklepy są definiowane w pliku `config_dealers.lua`.
+
+<FileTree>
+
+- ZSX_Dealership
+        - shared
+            - **config_dealers.lua**
+
+</FileTree>
+
+Aby dodać sklep, wykonaj następujące kroki:
+
+<Steps>
+1. **Otwórz plik konfiguracyjny**  
+   Otwórz plik `config_dealers.lua`, znajdujący się w folderze `shared` w zasobach.
+
+2. **Skopiuj przykładowy sklep**  
+   Skopiuj przykładowy sklep i wklej go poniżej ostatniego sklepu w pliku.
+    ```lua
+    ['my_new_shop'] = {
+        blip = {
+            sprite = 810, -- Pełna lista blipów: https://docs.fivem.net/docs/game-references/blips/
+            color = 2, -- Pełna lista kolorów blipów: https://docs.fivem.net/docs/game-references/blips/
+            size = 1.0, -- Rozmiar blipa na mapie/minimapie.
+            name = "Mój nowy salon", -- Nazwa wyświetlana blipa na mapie.
+            coords = vector3(-56.95651, -1096.566, 26.42233), -- Współrzędne dla blipa na mapie.
+        },
+        vehicle = {
+            coords = vector3(-15.29679, -1097.014, 26.67208), -- Gdzie pojazd pojawi się po zakończeniu zakupu.
+            heading = 161.1845, -- Kierunek pojazdu po spawnowaniu.
+        },
+        rest = {
+            vehicle_colors = {
+                primary = 112, -- Kolory pojazdu w salonie. Lista: https://wiki.rage.mp/index.php?title=Vehicle_Colors
+                secondary = 112, -- Kolory pojazdu w salonie. Lista: https://wiki.rage.mp/index.php?title=Vehicle_Colors
+            },
+        },
+        zone = {
+            coords = vector3(-56.76, -1097.97, 25.51), -- Współrzędne dla inicjacji celu/nie-celu.
+            heading = 31.17, -- Kierunek dla inicjacji celu.
+            minZ = 25.0, -- Minimalne współrzędne Z celu.
+            maxZ = 26.51, -- Maksymalne współrzędne Z celu.
+            width = 2.0, -- Szerokość obszaru celu.
+            enableDebug = false, -- Włącz debugowanie celu.
+        },
+        camera = 'underground', -- Nie zmieniaj tego, dopóki nie będziesz pewien, co robisz.
+    }
+    ```
+3. **Skonfiguruj sklep**  
+   Skonfiguruj sklep według własnych potrzeb. Możesz zmienić ustawienia blipa, pojazdu, strefy, kamery i inne, aby dostosować sklep.
+
+4. **Zapisz plik**  
+   Zapisz plik i uruchom ponownie serwer, aby zastosować zmiany.
+
+5. **Dodaj pojazdy do sklepu z bazy danych**  
+   Dodaj pojazdy do sklepu z bazy danych. Możesz to zrobić, dodając pojazdy do tabeli `ZSX_Dealership` w bazie danych, a następnie w kolumnie `dealer_key` dodaj nazwę sklepu (w naszym przykładzie jest to `my_new_shop`). Dodaj przynajmniej jeden pojazd.
+
+6. **Ciesz się!**
+   
+</Steps>
+
+## Korzystanie z ekskluzywnej płatności / treści
+
+Aby używać systemu ekskluzywnej płatności, musisz go włączyć w pliku:
+
+<FileTree>
+
+- ZSX_Dealership
+        - shared
+            - **config_exclusive.lua**
+
+</FileTree>
+
+<Code wrap code="Exclusive.Retrieval = {
+    use = true, -- USTAW 'USE' NA TRUE
+    type = 'COINS', 
+}" lang="lua" ins="true" title="shared/config_exclusive.lua"></Code>
+
+Teraz konfigurujemy funkcję, która będzie używana do pobierania waluty od gracza. Przejdź do:
+
+<FileTree>
+- ZSX_Dealership
+        - server
+            - functions
+                - **sv_editable.lua**
+</FileTree>
+
+<Code wrap code="Editable.ExclusivePayCheck = function(src, vehData)
+    -- Zastosuj kod sprawdzający, czy użytkownik ma wymaganą ekskluzywną walutę na cenę pojazdu. Przykład
+    local coins = 2000
+    if coins >= vehData.price then
+        return true
+    end
+    return false
+
+    -- W razie pomocy skontaktuj się na discordzie discord.gg/MF9uVuWrQn
+end
+
+
+Editable.ExclusivePayForVehicle = function(src, vehData)
+    local coins = 2000
+    local receivedPay = false
+    if coins >= vehData.price then
+        --removeCoinsFunc(vehData.price)
+        receivedPay = true
+    else
+        receivedPay = false
+    end
+    return receivedPay
+    -- W razie pomocy skontaktuj się na discordzie discord.gg/MF9uVuWrQn
+end" lang="lua" mark={highlights} title="server/functions/sv_editable.lua"> </Code>
+
+Musisz dodać funkcję, która usunie walutę od gracza i sprawdzi, czy gracz ma wystarczającą ilość waluty, aby kupić pojazd.
+
+Po tym możesz skonfigurować, który pojazd jest ekskluzywny do zakupu przy użyciu tej waluty. W tym celu edytuj pojazd w bazie danych, zmieniając wiersz `isExclusive` na 1.

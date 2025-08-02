@@ -1,0 +1,79 @@
+---
+title: About
+sidebar: {
+    order: 1
+}
+---
+
+import { Card, CardGrid, LinkCard,} from '@astrojs/starlight/components';
+import YouTubeGrid from '../../../components/youtube-grid.astro';
+
+
+ <YouTubeGrid
+	videos={[
+		{
+			href: 'https://youtu.be/wMEugRh8oE0',
+		},
+	]}
+/>
+<CardGrid>
+  <LinkCard title="Tebex Store" icon="open-book" href="https://zsx-development.tebex.io/package/6088051">
+  </LinkCard>
+  <LinkCard title="CFX forum post" icon="information" href="https://forum.cfx.re/t/zsx-dealership-fivem-vehicle-shop-with-cinematic-camera-system/5167167">
+  </LinkCard>
+</CardGrid>
+
+![Dealership](../../../assets/dealership/fullimg.jpeg)
+
+## Features
+
+ <CardGrid>
+  <Card title="Animated Player Data" icon="open-book">
+    ![Animated Player Data](../../../assets/dealership/player.png)
+    UI will attach itself to the player bone.
+  </Card>
+  <Card title="Vehicle Preview" icon="information">
+     ![Vehicle Preview](../../../assets/dealership/vehiclepreview.png)
+     The dealership has a built-in function to rotate the camera around a vehicle. Controlling the camera is fairly easy by moving the cursor around the screen to the desired direction.
+  </Card>
+   <Card title="Vehicle Selection" icon="setting">
+    ![Vehicle Selection](../../../assets/dealership/selection.png)
+    Vehicle selection is quite easy to use. Two main selectors are split between category and a vehicle list. This interface uses SVGs which is responsive to every resolution and aspect-ratio.
+  </Card>
+     <Card title="Cinematic Camera" icon="setting">
+    ![Settings](../../../assets/dealership/cinematicc.png)
+    provides you with brand new camera system, which uses cubicBezier curves to make every single cutscene much smoother than the original one.
+  </Card>
+   <Card title="Accessibility" icon="information">
+   ![Accessibility](../../../assets/dealership/os.png)
+   As many of my customers know I take joy in giving you the ability to adjust everything to your liking. ZSX Dealership gives you this opportunity starting from default config to adjusting the camera settings.
+  </Card>
+   <Card title="Stock System" icon="information">
+    ![Stock System](../../../assets/dealership/stock.png)
+
+    The Dealership has a built-in stock system which allows you to set the amount of vehicles you want to have in stock. This system is fully customizable and can be adjusted to your liking.
+  </Card>
+    <Card title="Multiple Dealerships" icon="information">
+    ![Identity](../../../assets/dealership/multiple.png)
+    You can create as many vehicle shops as you want.
+  </Card>
+    <Card title="Exclusive Pay" icon="information">
+    ![Character Creation](../../../assets/dealership/payment.png)
+    The dealership has a built in exclusive payment system that allows you to use other currencys to buy vehicles if you desire to do so.
+    </Card>
+
+    
+    ## Ingame-Screenshots
+    ---
+    ![1](../../../assets/dealership/ingame/1.jpeg)
+
+    ![2](../../../assets/dealership/ingame/2.jpeg)
+
+    ![3](../../../assets/dealership/ingame/3.jpeg)
+
+    ![4](../../../assets/dealership/ingame/4.jpeg)
+
+    ![5](../../../assets/dealership/ingame/5.jpeg)
+
+    ![6](../../../assets/dealership/ingame/6.png)
+</CardGrid> 

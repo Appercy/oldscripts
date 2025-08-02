@@ -1,0 +1,108 @@
+---
+title: O Projekcie
+sidebar: {
+    order: 1
+}
+---
+import { Aside, Tabs, TabItem, LinkCard, CardGrid } from '@astrojs/starlight/components';
+import YouTubeGrid from '../../../../components/youtube-grid.astro';
+
+<YouTubeGrid
+	videos={[
+		{
+			href: 'https://www.youtube.com/watch?v=VjkWxeRo75w',
+		},
+	]}
+/>
+
+<CardGrid>
+  <LinkCard title="Tebex Sklep" href="https://zsx-development.tebex.io/package/5289531">
+  </LinkCard>
+  <LinkCard title="Post na forum CFX" href="https://forum.cfx.re/t/qb-esx-standalone-hud-zsx-ui-user-friendly-interface-with-many-customization-options/4908261">
+  </LinkCard>
+</CardGrid>
+
+## Czym jest ZSX-UI?
+
+ZSX-UI to dostosowywalny zasób interfejsu użytkownika dla serwerów FiveM. Oferuje szeroki zakres funkcji i opcji dostosowywania, aby poprawić wrażenia użytkownika. Został zaprojektowany tak, aby był łatwy w użyciu i integracji z innymi zasobami.
+
+Zawiera:
+
+- Dostosowywalne ikony HUD
+- Dostosowywalne powiadomienia
+- Dostosowywalny pasek postępu
+- Dostosowywalne wyświetlacze dla pracy / pieniędzy / banku / ID / liczby użytkowników online
+- Dostosowywalny HUD pojazdu
+- Menu w grze do edycji interfejsu dla każdego gracza
+
+# Funkcje
+
+
+## Dostosowywalne ikony HUD
+<Tabs>
+<TabItem label="Podstawowe">![Podstawowe](../../../../assets/uiv1/icon/iconbasic.png)</TabItem>
+
+<TabItem label="Sześciokąt">![Sześciokąt](../../../../assets/uiv1/icon/iconhexagon.png)</TabItem>
+
+<TabItem label="SVG">![SVG](../../../../assets/uiv1/icon/iconsvg.png)</TabItem>
+
+<TabItem label="Diament">![Diament](../../../../assets/uiv1/icon/icondiamond.png)</TabItem>
+
+<TabItem label="Skośne">![Skośne](../../../../assets/uiv1/icon/iconskew.png)</TabItem>
+
+<TabItem label="Koło">![Koło](../../../../assets/uiv1/icon/iconcircle.png)</TabItem>
+
+</Tabs>
+<Tabs>
+    <TabItem label="Procentowe Koło">![Procentowe Koło](../../../../assets/uiv1/icon/percent.png)</TabItem>
+  
+    <TabItem label="Prostokątny Pasek Postępu">![Prostokątny Pasek Postępu](../../../../assets/uiv1/icon/progress.png)</TabItem>
+</Tabs>
+
+## Dostosowywalne powiadomienia
+<Tabs syncKey="hudv1">
+    <TabItem label="Podstawowe">![Podstawowe](../../../../assets/uiv1/notification/basic.png)</TabItem>
+    
+    <TabItem label="Klasyczne">![Klasyczne](../../../../assets/uiv1/notification/classic.png)</TabItem>
+    
+    <TabItem label="Nowoczesne">![Nowoczesne](../../../../assets/uiv1/notification/modern.png)</TabItem>
+</Tabs>
+
+## Dostosowywalny pasek postępu
+<Tabs syncKey="hudv1">
+    <TabItem label="Podstawowy">![Podstawowy](../../../../assets/uiv1/progressbar/basic.png)</TabItem>
+    
+    <TabItem label="Klasyczny">![Klasyczny](../../../../assets/uiv1/progressbar/classic.png)</TabItem>
+  
+    <TabItem label="Skośny">![Skośny](../../../../assets/uiv1/progressbar/skew.png)</TabItem>
+</Tabs>
+
+## Dostosowywalne wyświetlacze dla pracy / pieniędzy / banku / ID / liczby użytkowników online
+
+<Aside> Każdy z tych elementów można włączyć lub wyłączyć w pliku config.lua.</Aside>
+
+<Tabs syncKey="hudv1">
+    <TabItem label="Podstawowe">![Podstawowe](../../../../assets/uiv1/displayers/basic.png)</TabItem>
+   
+    <TabItem label="Skośne">![Skośne](../../../../assets/uiv1/displayers/skew.png)</TabItem>
+    
+    <TabItem label="Nowoczesne">![Nowoczesne](../../../../assets/uiv1/displayers/modern.png)</TabItem>
+</Tabs>
+
+## Dostosowywalny HUD pojazdu
+
+<Tabs syncKey="hudv1">
+    <TabItem label="Podstawowy">![Podstawowy](../../../../assets/uiv1/car/basic.png)</TabItem>
+    
+    <TabItem label="Zaawansowany">![Zaawansowany](../../../../assets/uiv1/car/advanced.png)</TabItem>
+    
+    <TabItem label="Nowoczesny">![Nowoczesny](../../../../assets/uiv1/car/modern.png)</TabItem>
+</Tabs>
+
+## Podgląd menu w grze do edycji interfejsu
+
+![Edytor w grze](../../../../assets/uiv1/ingame.png)
+
+## Podgląd trybu edycji w grze
+
+![Menu w grze](../../../../assets/uiv1/preview.png)

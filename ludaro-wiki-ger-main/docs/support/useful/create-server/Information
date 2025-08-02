@@ -1,0 +1,39 @@
+---
+sidebar_position: 1
+title: Informationen zum Hosting
+sidebar_label: Informationen zum Hosting
+---
+
+In der Welt des Hostings spielen verschiedene Aspekte eine entscheidende Rolle:
+
+- Erforderliche Leistung
+- Art des Servers (VPS oder dedizierter Server)
+- Deine Erfahrung im Server-Hosting
+
+Dieser Leitfaden ist für dich gedacht, egal ob du Anfänger oder fortgeschrittener Benutzer bist, um Hosting-Probleme zu vermeiden.
+
+Meiner Meinung nach gibt es drei Hauptvarianten des Hostings, aber bevor wir fortfahren, klären wir einige Begriffe:
+
+## Arten von Servern
+
+### Dedizierter Server
+Ein dedizierter Server ist ein Server, der sich in einem Rechenzentrum befindet und ganz dir gehört.
+
+### VPS (Virtueller Privater Server)
+Ein VPS ist ein virtueller Server, bei dem du einen Teil eines größeren Servers besitzt. Dies bringt einige Leistungs- und Freiheitseinschränkungen mit sich, ist jedoch in der Regel kostengünstiger. Diese Kompromisse sind jedoch für einen FiveM-Server in der Regel nicht relevant.
+
+## Betriebssysteme
+
+Es gibt zwei Hauptbetriebssysteme für das Server-Hosting: Linux und Windows.
+
+Beide sind gute Optionen, haben jedoch ihre jeweiligen Vor- und Nachteile in verschiedenen Aspekten.
+
+Beispielsweise läuft Linux schneller und effizienter, erfordert jedoch mehr technisches Wissen und Aufwand während der Einrichtung.
+
+Andererseits ist Windows möglicherweise etwas langsamer, bietet jedoch den Komfort, den Server ähnlich wie einen Windows-PC über die Remote Desktop-Verbindung zu verwalten.
+
+Im Abschnitt [[Windows VS Linux]] wird dieser Vergleich weiter vertieft und diskutiert, welche Option am Ende besser sein könnte.
+
+## Anbieter von dedizierten Servern
+
+Anbieter von dedizierten Servern wie Zap-Hosting bieten dir keinen kompletten Server, auf dem du alles machen kannst. Stattdessen erhältst du nur einen FiveM-Server. Das ist einfacher, weil du dich nicht um die Verwaltung eines ganzen Servers kümmern musst. Es hat jedoch den Nachteil, dass du an einen bestimmten Anbieter gebunden bist und möglicherweise nur begrenzte Kontrolle über die Konfiguration des Servers hast.

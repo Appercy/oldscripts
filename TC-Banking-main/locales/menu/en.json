@@ -1,0 +1,198 @@
+{
+    "settings": {
+        "title": "Settings",
+        "language": "Language",
+        "subtitle": "Select your language!",
+        "color": "Color selection",
+        "settingsApplied": "Settings applied",
+        "languageChanged": "Your language has been successfully changed",
+        "disabled": "Coming soon"
+    },
+    "sidebar": {
+        "settings": "Settings",
+        "home": "Home",
+        "banking": "Dashboard",
+        "billing": "Billing",
+        "atm": "ATM Cards",
+        "exit": "Exit"
+    },
+    "home": {
+        "balance": "Balance",
+        "balancehistory": "Transactions",
+        "recent": "Recent Transactions"
+    },
+    "banking": {
+        "title": "Banking Overview",
+        "unnamedAccount": "Unnamed Account",
+        "maskedIban": "•••• •••• •••• ••••",
+        "roles": {
+            "owner": "Owner",
+            "co-owner": "Co-owner",
+            "user": "User"
+        },
+        "actions": {
+            "deposit": "Deposit",
+            "withdraw": "Withdraw",
+            "transfer": "Transfer",
+            "addAccount": "Add Account",
+            "details": "Details",
+            "share": "Share",
+            "delete": "Delete",
+            "leave": "Leave",
+            "cancel": "Cancel",
+            "close": "Close"
+        },
+        "modals": {
+            "transaction": {
+                "title": "New Transaction",
+                "account": "Account",
+                "selectAccount": "Select Account",
+                "amount": "Amount"
+            },
+            "transfer": {
+                "title": "Transfer Money",
+                "fromAccount": "From Account",
+                "selectSource": "Select Source",
+                "transferType": "Transfer Type",
+                "toAccount": "To Account",
+                "selectDestination": "Select Destination",
+                "externalIban": "External IBAN",
+                "enterExternalIban": "Enter External IBAN",
+                "amount": "Amount",
+                "reason": "Reason",
+                "internal": "Internal",
+                "external": "External",
+                "enterReason": "Enter Reason",
+                "confirmTransfer": "Confirm Transfer"
+            },
+            "share": {
+                "title": "Share Account",
+                "playerIdentifier": "Player ID",
+                "enterPlayerIdentifier": "Enter Player ID",
+                "role": "Role",
+                "share": "Share"
+            },
+            "createAccount": {
+                "title": "Create Account",
+                "nickname": "Account Name",
+                "enterNickname": "Enter Account Name",
+                "createAccount": "Create Account"
+            },
+            "editRole": {
+                "title": "Edit Role",
+                "role": "Role",
+                "updateRole": "Update Role"
+            },
+            "deleteAccount": {
+                "title": "Delete Account",
+                "confirmMessage": "Are you sure you want to delete this account?",
+                "deleteAccount": "Delete Account"
+            },
+            "leaveAccount": {
+                "title": "Leave Account",
+                "confirmMessage": "Are you sure you want to leave this account?",
+                "leaveAccount": "Leave Account"
+            },
+            "accountDetails": {
+                "title": "Account Details",
+                "renamePlaceholder": "Rename Account",
+                "transactionHistory": "Transaction History",
+                "date": "Date",
+                "description": "Description",
+                "amount": "Amount",
+                "status": "Status",
+                "interestRate": "Interest Rate",
+                "accessList": "Access List"
+            }
+        }
+    },
+    "billing": {
+        "tabs": {
+            "received": "Received Bills",
+            "issued": "Issued Bills"
+        },
+        "received": {
+            "title": "Incoming Bills",
+            "subtitle": "Here you can see all the bills that have been issued to you.",
+            "createBill": "Create Bill",
+            "description": "Description",
+            "amount": "Amount",
+            "dueDate": "Due Date",
+            "timeLeft": "Time Left",
+            "daysLeft": "{days} days left",
+            "overdue": "{days} days overdue",
+            "paid": "Paid",
+            "actions": "Actions"
+        },
+        "issued": {
+            "title": "Issued Bills",
+            "subtitle": "Here you can see all the bills that you have issued.",
+            "description": "Description",
+            "amount": "Amount",
+            "dueDate": "Due Date",
+            "status": "Status",
+            "paid": "Paid",
+            "pending": "Pending",
+            "iban": "IBAN"
+        },
+        "modals": {
+            "createBill": {
+                "title": "Create New Bill",
+                "amount": "Amount",
+                "dueDate": "Due Date",
+                "description": "Description",
+                "descriptionPlaceholder": "e.g. Electricity Bill",
+                "recipient": "Recipient",
+                "recipientPlaceholder": "e.g. Electricity Provider",
+                "iban": "IBAN",
+                "ibanPlaceholder": "LS00BANK...",
+                "societyBill": "Is this a society bill?"
+            },
+            "payBill": {
+                "title": "Pay Bill",
+                "bill": "Bill",
+                "amount": "Amount",
+                "selectAccount": "Select Account",
+                "selectAccountPlaceholder": "Select Account"
+            }
+        },
+        "actions": {
+            "cancel": "Cancel",
+            "create": "Create",
+            "confirmPayment": "Confirm Payment"
+        }
+    },
+    "cardManagement": {
+        "title": "Card Management",
+        "newCard": "New Card",
+        "validThru": "Valid Thru",
+        "limit": "Limit",
+        "emptyState": "No cards found. Create your first card to get started.",
+        "modals": {
+            "createCard": {
+                "title": "Create New Card",
+                "account": "Account",
+                "nickname": "Nickname",
+                "nicknamePlaceholder": "Personal Card"
+            },
+            "withdrawalLimit": {
+                "title": "Withdrawal Limits",
+                "maxWithdrawal": "Maximum Withdrawal per Hour (€)"
+            },
+            "deleteCard": {
+                "title": "Delete Card",
+                "confirmMessage": "Are you sure you want to permanently delete this card?"
+            }
+        },
+        "actions": {
+            "lock": "Lock/Unlock",
+            "limit": "Withdrawal Limit",
+            "delete": "Delete",
+            "duplicate": "Duplicate",
+            "cancel": "Cancel",
+            "create": "Create",
+            "saveChanges": "Save Changes",
+            "deletePermanently": "Delete Permanently"
+        }
+    }
+}

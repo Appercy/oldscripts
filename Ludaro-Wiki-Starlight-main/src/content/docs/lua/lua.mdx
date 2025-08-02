@@ -1,0 +1,80 @@
+---
+title: 1. Lua Lernen!
+description: Entdecke die Grundlagen von Lua und entwickle deine ersten Skripte in FiveM.
+---
+
+import { CardGrid, LinkCard, Code, Aside } from '@astrojs/starlight/components';
+
+
+<Aside> Diese Dokumentation dient nur zu Demonstrationszwecken und ist nicht vollständig. Wenn du mehr über Lua lernen möchtest, schau dir die [offizielle Lua-Dokumentation](https://www.lua.org/docs.html) an. </Aside>
+
+# Lerne Lua!
+
+Willkommen zum Lua-Lernbereich! Hier findest du umfassende Informationen und Anleitungen zum Erlernen von Lua, speziell für FiveM. Meine Mission ist es, das FiveM-Scripting zugänglicher zu machen und eine wertvolle Ressource für neue Serverbetreiber und Developer zu bieten.
+
+
+## Wie?
+
+Wenn du Lua  lernen möchtest, brauchst du nur einen Compiler (ein Compiler ist eine website welche Lua code ausführt) zum testen deiner Programmierkenntnise. du kannst auch auf deinem pc lua dateien ausführen aber das ist viel schwieriger 
+
+um dann aber in FiveM Lua zu verwenden benötigst du natürlich auch einen FiveM server und deinen dazu gehörigen Text-Editor um Lua dateien zu bearbeiten, dazu rate ich dir [Visual Studio Code](https://vscode.dev)
+
+Um alles was du hier siehst nachzuprobieren rate ich dir auf [dieser Website hier](https://www.tutorialspoint.com/execute_lua_online.php) wenn du möchtest einfach mal den code einzugeben und ihn selbst zu verstehen und auszuprobieren!
+
+## Lua an sich 
+
+Lua ist auch auserhalb von FiveM sehr beliebt und wird in vielen Bereichen eingesetzt. Hier sind einige Beispiele:
+
+- Roblox, World of Warcraft, Garry's Mod, und viele andere Spiele verwenden Lua für die Skripterstellung.
+
+- Lua wird auch in eingebetteten Systemen, wie z.B. in der Automobilindustrie, verwendet.
+
+Aber bevor wir in die Details gehen, hier sind ein paar Tipps, um das Beste aus deinem Lernprozess herauszuholen:
+
+- **Gehe in deinem Tempo vor:** Lass dich nicht stressen. Es ist dein Lernprozess, also mach es so, wie es für dich am besten funktioniert.
+- **Finde einen Zweck:** Überlege dir, warum du Lua lernen möchtest. Vielleicht für FiveM, für coole Roblox-Spiele oder einfach nur aus Spaß?
+- **Sei kreativ:** Denk außerhalb der Box! Versuch etwas Neues und lass dich inspirieren.
+- **Englisch lernen:** Englisch ist die Sprache der Programmierung. Es ist zwar nicht zwingend notwendig, aber es hilft enorm!
+
+## Wie geht lua?
+
+Lua ist eine Skriptsprache, Hier sind einige Beispiele, um dir einen Eindruck von Lua zu vermitteln:
+
+export const luacode2 = `local name = "Ludaro"
+print("Hallo, " .. name)`
+
+<Code lang="lua" code={luacode2}></Code>
+gibt aus: 
+
+<Code lang="lua" code={`Hallo, Ludaro`} frame="terminal"></Code>
+
+Daraus lernen wir das wir eine Variable `name` erstellen und ihr den Wert `Ludaro` zuweisen. Dann geben wir den Text `Hallo, ` und den Wert der Variable `name` aus. das ist unser erstes Lua Skript!
+
+um aber mehr zu machen als nur Text auszugeben, müssen wir mehr lernen. 
+
+## Nächste Schritte
+
+<CardGrid>
+  <LinkCard
+    title="2. Lua Basics!"
+    description="Erfahre, wie Lua funktioniert."
+    href="/lua/basics"
+    icon="pencil"
+  />
+  <LinkCard
+    title="3. Lua in Verbindung mit FiveM"
+    description="Lerne, wie du mit Lua in FiveM umgehst und wie du Resourcen erstellst."
+    href="/lua/fivem"
+    icon="loop"
+  />
+  </CardGrid>
+
+
+
+
+
+
+
+
+
+

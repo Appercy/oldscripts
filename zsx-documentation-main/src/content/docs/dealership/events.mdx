@@ -1,0 +1,125 @@
+---
+title: Events
+sidebar: {
+    order: 4
+}
+---
+
+## Dealership Events
+
+The Dealership resource has a few events that you can use to interact with the resource. Below are the events and how to use them.
+
+the baseevents are located in
+
+import { FileTree } from '@astrojs/starlight/components';
+
+
+<FileTree>
+
+- ZSX_Dealership
+  - client
+        - config
+            - **cl_baseevents.lua**
+
+</FileTree>
+
+## **ZSX_Dealership:Listeners:OnTestDriveInit**
+
+Triggered when a test drive starts.
+
+#### Parameters
+- **None**
+
+
+#### Example
+```lua
+AddEventHandler('ZSX_Dealership:Listeners:OnTestDriveInit', function()
+    print('Test drive has started.')
+end)
+```
+
+---
+
+## **ZSX_Dealership:Listeners:OnTestDriveEnd**
+
+Triggered when a test drive ends.
+
+#### Parameters
+- **None**
+
+
+#### Example
+```lua
+AddEventHandler('ZSX_Dealership:Listeners:OnTestDriveEnd', function()
+    print('Test drive has ended.')
+end)
+```
+
+---
+
+## **ZSX_Dealership:Listeners:OnDealershipInit**
+
+Triggered when the dealership is initialized.
+
+#### Parameters
+- **None**
+
+
+#### Example
+```lua
+AddEventHandler('ZSX_Dealership:Listeners:OnDealershipInit', function()
+    print('Dealership has been initialized.')
+end)
+```
+
+---
+
+## **ZSX_Dealership:Listeners:OnDealershipEnd**
+
+Triggered when the dealership is closed or shut down.
+
+#### Parameters
+- **None**
+
+
+#### Example
+```lua
+AddEventHandler('ZSX_Dealership:Listeners:OnDealershipEnd', function()
+    print('Dealership has been closed.')
+end)
+```
+
+---
+
+## **ZSX_Dealership:Listeners:VehicleBought**
+
+Triggered when a vehicle is purchased.
+
+#### Parameters
+- **vehicle_entity** *(number)*: The entity ID of the purchased vehicle.
+- **plate** *(string)*: The license plate of the purchased vehicle.
+
+
+#### Example
+```lua
+AddEventHandler('ZSX_Dealership:Listeners:VehicleBought', function(vehicle_entity, plate)
+    print('Vehicle bought with entity ID:', vehicle_entity, 'and plate:', plate)
+end)
+```
+
+---
+
+## **ZSX_Dealership:Listeners:VehicleOnChange**
+
+Triggered when the vehicle in the dealership changes.
+
+#### Parameters
+- **vehicle_entity** *(number)*: The entity ID of the currently selected vehicle.
+
+
+#### Example
+```lua
+AddEventHandler('ZSX_Dealership:Listeners:VehicleOnChange', function(vehicle_entity)
+    print('Current vehicle in dealership changed to entity ID:', vehicle_entity)
+end)
+```

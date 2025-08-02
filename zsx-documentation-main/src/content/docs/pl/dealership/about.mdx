@@ -1,0 +1,76 @@
+---
+title: O nas
+sidebar: {
+    order: 1
+}
+---
+
+import { Card, CardGrid, LinkCard,} from '@astrojs/starlight/components';
+import YouTubeGrid from '../../../../components/youtube-grid.astro';
+
+<YouTubeGrid
+	videos={[
+		{
+			href: 'https://youtu.be/wMEugRh8oE0',
+		},
+	]}
+/>
+<CardGrid>
+  <LinkCard title="Sklep Tebex" icon="open-book" href="https://zsx-development.tebex.io/package/6088051">
+  </LinkCard>
+  <LinkCard title="Wpis na forum CFX" icon="information" href="https://forum.cfx.re/t/zsx-dealership-fivem-vehicle-shop-with-cinematic-camera-system/5167167">
+  </LinkCard>
+</CardGrid>
+
+![Dealership](../../../../assets/dealership/fullimg.jpeg)
+
+## Funkcje
+
+<CardGrid>
+  <Card title="Animowane dane gracza" icon="open-book">
+    ![Animowane dane gracza](../../../../assets/dealership/player.png)
+    UI przyczepi się do kości gracza.
+  </Card>
+  <Card title="Podgląd pojazdu" icon="information">
+     ![Podgląd pojazdu](../../../../assets/dealership/vehiclepreview.png)
+     Dealer ma wbudowaną funkcję obracania kamery wokół pojazdu. Sterowanie kamerą jest dość łatwe — wystarczy przesunąć kursor w pożądanym kierunku.
+  </Card>
+  <Card title="Wybór pojazdu" icon="setting">
+    ![Wybór pojazdu](../../../../assets/dealership/selection.png)
+    Wybór pojazdu jest bardzo prosty w obsłudze. Dwa główne selektory są podzielone na kategorię i listę pojazdów. Ten interfejs korzysta z SVG, które są responsywne na każdej rozdzielczości i proporcji ekranu.
+  </Card>
+  <Card title="Kamera kinowa" icon="setting">
+    ![Ustawienia](../../../../assets/dealership/cinematicc.png)
+    Zapewnia nowy system kamery, który wykorzystuje krzywe cubicBezier do wygładzenia każdej sceny kinowej, czyniąc ją o wiele płynniejszą niż oryginalna.
+  </Card>
+  <Card title="Dostępność" icon="information">
+    ![Dostępność](../../../../assets/dealership/os.png)
+    Jak wielu moich klientów wie, lubię dawać możliwość dostosowania wszystkiego do swoich potrzeb. ZSX Dealership daje Ci tę możliwość, począwszy od domyślnej konfiguracji aż po ustawienia kamery.
+  </Card>
+  <Card title="System zapasów" icon="information">
+    ![System zapasów](../../../../assets/dealership/stock.png)
+    Dealer posiada wbudowany system zapasów, który pozwala ustawić liczbę pojazdów, które chcesz mieć w magazynie. System jest w pełni konfigurowalny i można go dostosować do własnych potrzeb.
+  </Card>
+  <Card title="Wiele salonów" icon="information">
+    ![Tożsamość](../../../../assets/dealership/multiple.png)
+    Możesz stworzyć tyle sklepów z pojazdami, ile chcesz.
+  </Card>
+  <Card title="Ekskluzywna płatność" icon="information">
+    ![Tworzenie postaci](../../../../assets/dealership/payment.png)
+    Dealer ma wbudowany ekskluzywny system płatności, który pozwala używać innych walut do zakupu pojazdów, jeśli chcesz.
+  </Card>
+
+## Zrzuty ekranu z gry
+---
+![1](../../../../assets/dealership/ingame/1.jpeg)
+
+![2](../../../../assets/dealership/ingame/2.jpeg)
+
+![3](../../../../assets/dealership/ingame/3.jpeg)
+
+![4](../../../../assets/dealership/ingame/4.jpeg)
+
+![5](../../../../assets/dealership/ingame/5.jpeg)
+
+![6](../../../../assets/dealership/ingame/6.png)
+</CardGrid>

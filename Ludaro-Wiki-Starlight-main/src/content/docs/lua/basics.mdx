@@ -1,0 +1,132 @@
+---
+title: 2. Lua Basics
+description: Lerne die Grundlagen von Lua!
+---
+
+import { CardGrid, LinkCard, Code, Aside } from '@astrojs/starlight/components';
+
+
+
+<Aside> um alles besser zu verstehen rate ich dir online mit einem compiler wie [diesem hier](https://www.tutorialspoint.com/execute_lua_online.php) mit zu machen! </Aside>
+
+## Wie Funktioniert lua?
+
+in Lua gibt es sowas das nennt sich "Variablen" und "Funktionen"
+
+### Variablen
+
+Variablen sind wie kleine Behälter in denen du Werte speichern kannst. Hier ist ein Beispiel:
+
+<Code lang="lua" code={`local name = "Ludaro`}></Code>
+
+In diesem Beispiel erstellen wir eine Variable namens `name` und weisen ihr den Wert `Ludaro` zu.
+
+und er gibt aus
+
+<Code lang="lua" code={`Hallo, Ludaro`} frame="terminal"></Code>
+
+das ist ein sogenannter "String" also Text. den wir in der Variable `name` gespeichert haben.
+
+Variablen können aber auch Zahlen speichern:
+
+<Code lang="lua" code={`local age = 18`}></Code>
+
+
+In diesem Beispiel erstellen wir eine Variable namens `age` und weisen ihr den Wert `18` zu.
+
+und wenn wir das ausgeben:
+
+<Code lang="lua" code={`"Ich bin"  .. age .. "Jahre alt"`} frame="terminal"></Code>
+
+gibt es aus:
+
+<Code lang="lua" code={`Ich bin 18 Jahre alt`} frame="terminal"></Code>
+
+Jetzt gibt es aber nicht nur Zahlen und Text, sondern viel mehr, dadrunter:
+
+### Booleans 
+
+Booleans sind Wahrheitswerte, die entweder `true` oder `false` sein können. Hier ist ein Beispiel:
+
+<Code lang="lua" code={`local isLudaroCool = true`}></Code>
+
+In diesem Beispiel erstellen wir eine Variable namens `isLudaroCool` und weisen ihr den Wert `true` zu.
+
+und wenn wir das ausgeben:
+
+<Code lang="lua" code={`"Ist Ludaro cool?" .. tostring(isLudaroCool)` } frame="terminal"></Code>
+
+gibt es aus:
+
+<Code lang="lua" code={`Ist Ludaro cool? true`} frame="terminal"></Code>
+
+### nil 
+
+`nil` ist ein spezieller Wert in Lua, der verwendet wird, um anzuzeigen, dass eine Variable keinen Wert hat. Hier ist ein Beispiel:
+
+<Code lang="lua" code={`local myVariable`}></Code>
+
+In diesem Beispiel erstellen wir eine Variable namens `myVariable`, ohne ihr einen Wert zuzuweisen.
+
+und wenn wir das ausgeben:
+
+<Code lang="lua" code={`"myVariable ist " .. tostring(myVariable) `} frame="terminal"></Code>
+
+gibt es aus:
+
+<Code lang="lua" code={`myVariable ist nil`} frame="terminal"></Code>
+
+### table 
+
+`table` ist ein komplexer Datentyp in Lua, der verwendet wird, um mehrere Werte in einer einzigen Variablen zu speichern. Hier ist ein Beispiel:
+
+<Code lang="lua" code={`local myTable = {name = "Ludaro", age = 18}`}></Code>
+
+In diesem Beispiel erstellen wir eine Variable namens `myTable` und weisen ihr ein `table` zu, das die Werte `name` und `age` enthält.
+
+und wenn wir das ausgeben:
+
+<Code lang="lua" code={`"Mein Name ist" .. myTable.name .. "und ich bin" .. myTable.age ..  "Jahre alt"`} frame="terminal"></Code>
+
+gibt es aus:
+
+<Code lang="lua" code={`Mein Name ist Ludaro und ich bin 18 Jahre alt`} frame="terminal"></Code>
+
+### Funktionen
+
+Funktionen sind wie kleine Programme, die eine bestimmte Aufgabe ausführen. das machen wir damit wir nicht immer wieder das gleiche 5000 mal schreiben müssen Stell sie dir wie eine Buchseite vor die du immer wieder aufrufen kannst. Hier ist ein Beispiel:
+
+<Code lang="lua" code={`function sayHello(name)
+  print("Hallo, " .. name)
+end`}></Code>
+
+In diesem Beispiel erstellen wir eine Funktion namens `sayHello`, die den Parameter `name` erwartet und den Text `Hallo, ` und den Wert des Parameters `name` ausgibt.
+
+und wenn wir die Funktion aufrufen:
+
+<Code lang="lua" code={`sayHello("Ludaro")`} ></Code>
+
+gibt es aus:
+
+<Code lang="lua" code={`Hallo, Ludaro`} frame="terminal"></Code>
+
+
+### Nächste Schritte
+
+<CardGrid>
+    <LinkCard
+        title="3. Lua in Verbindung mit FiveM"
+        description="Lerne, wie du mit Lua in FiveM umgehst und wie du Resourcen erstellst."
+        href="/lua/fivem"
+        icon="loop"
+    />
+    <LinkCard
+        title="4. Eigenes Script erstellen!"
+        description="Lerne, wie du dein eigenes Lua Script erstellst und ausführst."
+        href="/lua/ownscript"
+        icon="pencil"
+    />
+</CardGrid>
+
+
+

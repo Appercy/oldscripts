@@ -1,0 +1,55 @@
+---
+title: About
+sidebar: {
+    order: 1
+}
+---
+
+
+ <YouTubeGrid
+	videos={[
+		{
+			href: 'https://www.youtube.com/watch?v=VjkWxeRo75w',
+		},
+	]}
+/>
+
+<CardGrid>
+  <LinkCard title="Tebex Store" href="https://zsx-development.tebex.io/package/6101755">
+  </LinkCard>
+  <LinkCard title="CFX forum post"href="https://forum.cfx.re/t/qb-esx-zsx-multicharacter-cinematic-multicharacter/5205735">
+  </LinkCard>
+</CardGrid>
+
+# Features
+
+
+import { Card, CardGrid, LinkCard,} from '@astrojs/starlight/components';
+import YouTubeGrid from '../../../components/youtube-grid.astro';
+
+ <CardGrid>
+  <Card title="Character Selection" icon="open-book">
+    ![Character Selection](../../../assets/multicharacter/charselect.png)
+  </Card>
+  <Card title="Spawn Selection" icon="information">
+     ![Spawn Selection](../../../assets/multicharacter/spawnselection.png)
+  </Card>
+   <Card title="Music Settings" icon="setting">
+    ![Settings](../../../assets/multicharacter/musicsettings.png)
+  </Card>
+     <Card title="Camera Settings" icon="setting">
+    ![Settings](../../../assets/multicharacter/cameraoptions.png)
+  </Card>
+   <Card title="Light/Dark mode" icon="information">
+   ![Light/Dark mode](../../../assets/multicharacter/lmmode.png)
+  </Card>
+   <Card title="Pre-register screen" icon="information">
+    ![Pre-register screen](../../../assets/multicharacter/preregister.png)
+  </Card>
+    <Card title="Identity" icon="information">
+    ![Identity](../../../assets/multicharacter/identity.png)
+  </Card>
+    <Card title="After Character Creation" icon="information">
+    ![Character Creation](../../../assets/multicharacter/spawning.png)
+    </Card>
+</CardGrid> 

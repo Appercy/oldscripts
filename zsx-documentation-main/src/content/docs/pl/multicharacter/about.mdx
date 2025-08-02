@@ -1,0 +1,49 @@
+---
+title: O nas
+sidebar: {
+    order: 1
+}
+---
+
+<YouTubeGrid
+    videos={[
+        {
+            href: 'https://www.youtube.com/watch?v=VjkWxeRo75w',
+            title: 'ZSX_Multicharacter | FiveM Cinematic Multicharacter',
+            description: 'Rewolucyjny system multicharakterów dla Qbox ESX i QB!',
+        },
+    ]}
+/>
+
+# Funkcje
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+import YouTubeGrid from '../../../../components/youtube-grid.astro';
+
+<CardGrid>
+  <Card title="Wybór postaci" icon="open-book">
+    ![Wybór postaci](../../../../assets/multicharacter/charselect.png)
+  </Card>
+  <Card title="Wybór miejsca odrodzenia" icon="information">
+     ![Wybór miejsca odrodzenia](../../../../assets/multicharacter/spawnselection.png)
+  </Card>
+   <Card title="Ustawienia muzyki" icon="setting">
+    ![Ustawienia](../../../../assets/multicharacter/musicsettings.png)
+  </Card>
+   <Card title="Ustawienia kamery" icon="setting">
+    ![Ustawienia](../../../../assets/multicharacter/cameraoptions.png)
+  </Card>
+   <Card title="Tryb jasny/ciemny" icon="information">
+   ![Tryb jasny/ciemny](../../../../assets/multicharacter/lmmode.png)
+  </Card>
+   <Card title="Ekran wstępnej rejestracji" icon="information">
+    ![Ekran wstępnej rejestracji](../../../../assets/multicharacter/preregister.png)
+  </Card>
+    <Card title="Tożsamość" icon="information">
+    ![Tożsamość](../../../../assets/multicharacter/identity.png)
+  </Card>
+    <Card title="Po stworzeniu postaci" icon="information">
+    ![Tworzenie postaci](../../../../assets/multicharacter/spawning.png)
+    </Card>
+
+</CardGrid>

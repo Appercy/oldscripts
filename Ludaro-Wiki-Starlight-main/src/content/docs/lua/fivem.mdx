@@ -1,0 +1,95 @@
+---
+title: 3. Lua in Verbindung mit FiveM
+description: Lerne, wie du mit Lua in FiveM umgehst und wie du Resourcen erstellst.
+---
+
+import { CardGrid, LinkCard, Code, Aside, FileTree } from '@astrojs/starlight/components';
+
+
+# Lua in Verbindung mit FiveM
+
+FiveM ist eine Modifikation für Grand Theft Auto V, die es ermöglicht, eigene Server zu hosten und zu verwalten. FiveM verwendet Lua als Skriptsprache, um Ressourcen zu erstellen und zu verwalten. In diesem Abschnitt lernst du, wie du mit Lua in FiveM umgehst und wie du Ressourcen erstellst.
+
+## Was ist eine Ressource?
+
+Eine Ressource ist eine Sammlung von Dateien, die in FiveM geladen und ausgeführt werden können. Ressourcen können Skripte, Modelle, Texturen, Sounds und andere Dateien enthalten, die für das Funktionieren eines Servers erforderlich sind. Ressourcen können unabhängig voneinander geladen und entladen werden, was es ermöglicht, den Server dynamisch zu konfigurieren und zu erweitern.
+
+## Wie erstelle ich eine Ressource?
+
+Um eine Ressource zu erstellen, musst du ein Verzeichnis mit dem Namen der Ressource erstellen und die erforderlichen Dateien darin ablegen. Eine Ressource muss mindestens eine `__resource.lua`-Datei enthalten, die die Konfiguration der Ressource definiert. Hier ist ein Beispiel für eine einfache Ressource:
+
+<FileTree>
+- myresource/
+  - fxmanifest.lua kann auch __resource.lua heißen
+  - server.lua
+  - client.lua
+</FileTree>
+
+In diesem Beispiel haben wir eine Ressource mit dem Namen `myresource` erstellt. Die Ressource enthält eine `fxmanifest.lua`-Datei, die die Konfiguration der Ressource definiert, sowie eine `server.lua`- und eine `client.lua`-Datei, die die Skripte der Ressource enthalten.
+
+## Wie lade ich eine Ressource?
+
+Um eine Ressource in FiveM zu laden, musst du sie in den `resources`-Ordner deines Servers kopieren und  dann in deine server.cfg die resource hinzufügen oder mit `start myresource` die Ressource direkt starten.
+
+## fxmanifest.lua
+
+Die fxmanifest.lua-Datei ist die Konfigurationsdatei einer Ressource in FiveM. Sie definiert die Metadaten der Ressource, wie z.B. den Namen, die Version, die Autoren und die Abhängigkeiten. Hier ist ein Beispiel für eine einfache fxmanifest.lua-Datei:
+
+```lua
+fx_version 'cerulean'
+game 'gta5'
+
+client_scripts {
+    'client.lua'
+}
+
+server_scripts {
+    'server.lua'
+}
+```
+
+In diesem Beispiel definieren wir die Metadaten der Ressource, indem wir die `fx_version` und das Spiel, für das die Ressource bestimmt ist, angeben. Wir geben auch an, welche Skripte in der Ressource geladen werden sollen, indem wir die `client_scripts` und `server_scripts` Abschnitte definieren.
+
+## Client // Server 
+
+In FiveM Code kann entweder auf dem Client oder auf dem Server ausgeführt werden. Client-Skripte werden auf dem Client ausgeführt, d.h. auf dem Computer des Spielers, während Server-Skripte auf dem Server ausgeführt werden, d.h. auf dem Computer, auf dem der Server gehostet wird. Client-Skripte können mit dem Server kommunizieren, indem sie Ereignisse senden und empfangen. mit Sogenannten "Events" und "Callbacks" dies ist so aufgeteilt damit der Server nicht unnötig belastet wird. und aus Sicherheitsgründen.
+
+
+In FiveM gibt es viele verschiedenen Funktionen die von GTA 5 stammen und von FiveM erweitert wurden. alle findest du in der [Dokumentation von FiveM](https://docs.fivem.net/docs/scripting-manual/introduction/) hier sind ein paar Beispiele
+
+- `TriggerEvent` - Sendet ein Ereignis an den Client oder den Server.
+
+- `RegisterCommand` - Registriert einen Befehl, der im Chat verwendet werden kann.
+
+- `RegisterNetEvent` - Registriert ein Netzwerkevent, das vom Client oder Server empfangen werden kann.
+
+- `TriggerClientEvent` - Sendet ein Ereignis an einen bestimmten Client.
+
+- `TriggerServerEvent` - Sendet ein Ereignis an den Server.
+
+- `GetPlayerPed` - Gibt das Ped des Spielers zurück.
+
+- `GetPlayerName` - Gibt den Namen des Spielers zurück.
+
+- `GetPlayerServerId` - Gibt die Server-ID des Spielers zurück.
+
+- `GetEntityCoords` - Gibt die Koordinaten einer Entität zurück.
+
+- `SetEntityCoords` - Setzt die Koordinaten einer Entität.
+
+- `SetEntityHeading` - Setzt die Ausrichtung einer Entität.
+
+- `SetEntityVisible` - Setzt die Sichtbarkeit einer Entität.
+
+und so weiter..
+
+## Nächste Schritte
+
+<CardGrid>
+    <LinkCard
+        title="4. Eigenes Script erstellen!"
+        description="Lerne, wie du dein eigenes Lua Script erstellst und ausführst."
+        href="/lua/ownscript"
+        icon="pencil"
+    />
+</CardGrid>

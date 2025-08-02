@@ -1,0 +1,121 @@
+---
+title: Integracja
+sidebar: {
+    order: 4
+}
+---
+
+import { Code, Steps, Tabs, TabItem} from '@astrojs/starlight/components'
+
+# Integracja
+
+## Czym jest integracja?
+
+Integracja odnosi się do procesu łączenia interfejsu użytkownika (UI) z innymi zasobami w Twoim projekcie. Można to osiągnąć za pomocą udostępnionych eksportów lub zdarzeń.
+
+<Tabs>
+<TabItem label="Powiadomienie">
+### Zdarzenie / Eksport
+Powiadomienia można zintegrować z Twoim zasobem, korzystając z eksportów lub zdarzeń oferowanych przez UI. Możesz to zrobić za pomocą tego eksportu:
+
+```lua
+local icon = 'fas fa-bell' -- ikony FontAwesome
+local caption = 'Powiadomienie' -- tytuł do wyświetlenia
+local text = 'To jest powiadomienie' -- tekst do wyświetlenia
+local length = 5000 -- czas w milisekundach
+exports['ZSX_UI']:AddNotify(icon, caption, text, length)
+```
+
+To samo można zrobić przy użyciu zdarzenia:
+
+```lua
+local icon = 'fas fa-bell' -- ikony FontAwesome
+local caption = 'Powiadomienie' -- tytuł do wyświetlenia
+local text = 'To jest powiadomienie' -- tekst do wyświetlenia
+local length = 5000 -- czas w milisekundach
+TriggerEvent('ZSX_UI:addNotify', icon, caption, text, length)
+```
+
+### Integracja z frameworkiem
+Dla większej wygody można zastąpić te eksporty systemem powiadomień używanym w Twoim frameworku.
+
+<Tabs>
+<TabItem label="ESX"> 
+Aby to zrobić, wyszukaj `ESX.ShowNotification` w pliku `es_extended/client/functions.lua` i zamień go na poniższy kod:
+<Code wrap lang="lua" code='function ESX.ShowNotification(message, notifyType, length)
+    if exports.ZSX_UI then
+        exports["ZSX_UI"]:AddNotify("fas fa-inbox", "Powiadomienie!", message, length)
+    else
+        if GetResourceState("esx_notify") ~= "missing" then
+            return exports["esx_notify"]:Notify(notifyType, length, message)
+        end
+    end
+end'></Code>
+</TabItem>
+<TabItem label="QBCore">
+<Code wrap lang="lua" code='function QBCore.Functions.Notify(text, textype, length)
+    if type(text) == "table" then
+        local ttext = text.text or "Placeholder"
+        local caption = text.caption or "Placeholder"
+        local icon = text.icon or "fas fa-inbox"
+        local length = length or 3000
+        exports["ZSX_UI"]:AddNotify(icon, caption, ttext, length)
+    else
+        local ttext = text or "Placeholder"
+        local length = length or 5000
+        exports["ZSX_UI"]:AddNotify("fas fa-inbox", "Powiadomienie", ttext, length)
+    end
+end'></Code>
+</TabItem>
+</Tabs>
+</TabItem>
+
+<TabItem label="Pasek postępu">
+### Zdarzenie / Eksport
+Paski postępu można zintegrować z Twoim zasobem, korzystając z eksportów lub zdarzeń oferowanych przez UI. Możesz to zrobić za pomocą tego eksportu:
+
+```lua
+exports['ZSX_UI']:ProgressBar('Własny pasek postępu...', 
+    3000, {
+        freezeEntity = true,
+        onComplete = function()
+            -- kod do wykonania po zakończeniu
+        end,
+        disableControls = "all",
+    }
+)
+```
+
+lub tego zdarzenia:
+
+```lua
+TriggerEvent('ZSX_UI:ProgressBar', 'Własny pasek postępu...', 
+    3000, {
+        freezeEntity = true,
+        onComplete = function()
+            -- kod do wykonania po zakończeniu
+        end,
+        disableControls = "all",
+    }
+)
+``` 
+</TabItem>
+</Tabs>
+
+# Inicjalizacja
+
+## Czym jest inicjalizacja?
+
+Inicjalizacja to proces konfiguracji UI po raz pierwszy. Domyślnie inicjalizacja (`Config.AutoStartUI`) jest ustawiona na `false`, co oznacza, że interfejs użytkownika wyświetli się na początku gry.
+
+Może to stanowić problem, jeśli chcesz, aby konfiguracja UI została przeprowadzona później w grze. W takim przypadku możesz ustawić `Config.AutoStartUI` na `false`, a następnie ręcznie zainicjować UI za pomocą eksportu lub zdarzenia.
+
+### Eksport do inicjalizacji
+```lua
+exports['ZSX_UI']:Initialize()
+```
+
+### Zdarzenie do inicjalizacji
+```lua
+TriggerEvent('ZSX_UI:Initialize')
+```

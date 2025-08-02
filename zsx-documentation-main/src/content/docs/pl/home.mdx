@@ -1,0 +1,60 @@
+---
+title: Dokumentacja Rozwoju ZSX
+description: Zanurz się w technicznej stronie Rozwoju ZSX. Odkryj wglądy, wskazówki i zasoby, aby wdrożyć, rozszerzyć i ulepszyć swoje doświadczenie.
+---
+
+# Strona główna innowacji
+Witamy w Dokumentacji Rozwoju ZSX, gdzie innowacja spotyka się z precyzją. Tutaj znajdziesz wszystko, czego potrzebujesz, aby wdrożyć, rozszerzyć i przeprojektować nasze zasoby, aby ulepszyć swoje doświadczenie w grach. Odkrywaj pomocne wskazówki, fragmenty kodu i szczegółową dokumentację.
+
+## O Rozwoju ZSX
+
+ZSX Development to jednoosobowy zespół poświęcony dostarczaniu wysokiej jakości, immersyjnych zasobów dla Twojego doświadczenia w FiveM. Od naszego powstania w 2019 roku z systemem blackout inspirowanym grą Watch Dogs, przesuwamy granice i wyobrażamy sobie, co jest możliwe w FiveM.
+
+Skupiamy się na tworzeniu stabilnych, dobrze zaprojektowanych zasobów z dokładnym planowaniem i adaptacyjnością do różnych frameworków. Chociaż prezentowanie naszej pracy pozostaje wyzwaniem, jesteśmy zaangażowani w poprawę i dostarczanie zasobów, które przewyższają oczekiwania.
+
+### Nasze zasoby
+
+import { Tabs, TabItem, CardGrid, LinkCard,} from '@astrojs/starlight/components';
+import YouTubeGrid from '../../../components/youtube-grid.astro';
+
+<Tabs>
+	<TabItem label="ZSX-Multicharacter" icon="star">
+	<YouTubeGrid
+	videos={[
+		{
+			href: 'https://www.youtube.com/watch?v=VjkWxeRo75w',
+			title: 'ZSX_Multicharacter | FiveM Cinematic Multicharacter',
+			description: 'Rewolucyjny system multicharacter dla Qbox ESX i QB!',
+		},
+	]}
+	/>
+	</TabItem>
+	<TabItem label="ZSX-Dealership" icon="moon">
+		<YouTubeGrid
+	videos={[
+		{
+			href: 'https://www.youtube.com/watch?v=wMEugRh8oE0',
+			title: 'ZSX_Dealership | FiveM Vehicle Shop',
+			description: 'System Dealership inspirowany NFS!',
+		},
+	]}
+	/>
+	</TabItem>
+
+	<TabItem label="ZSX-UI" icon="moon">
+		<YouTubeGrid
+	videos={[
+		{
+			href: 'https://www.youtube.com/watch?v=FZ5aD6U9D80',
+			title: 'ZSX_UI (V1) | FiveM Customizable Interface',
+			description: 'Dostosowywalny interfejs dla Twojego serwera FiveM',
+		},
+		{
+			href: 'https://www.youtube.com/watch?v=s7HqJ5-_Pmo&t=39s',
+			title: 'ZSX_UI (V2) | FiveM Customizable Interface',
+			description: 'Dostosowywalny interfejs dla Twojego serwera FiveM (V2) z większą ilością funkcji i ulepszeń',
+		}
+	]}
+	/>
+	</TabItem>
+</Tabs>
